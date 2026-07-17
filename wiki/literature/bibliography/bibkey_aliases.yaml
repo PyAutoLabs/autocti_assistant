@@ -1,0 +1,5 @@
+# Common or project-local citation key: canonical autocti_literature.bib key.
+# Add an alias when an external paper or a science project uses a different key
+# for a paper already in autocti_literature.bib, so citations resolve to one entry.
+
+# (none yet — populated as papers are cited from science projects)
