@@ -1,0 +1,35 @@
+# PyAutoCTI Assistant
+
+> The PyAutoCTI Assistant is an AI assistant for doing strong-lens science with PyAutoCTI — agent instructions, task skills, and a reference wiki in one cloned repo you drive by conversation. This file is the front door: it routes you by intent — start a chat session, see what the assistant can do, read the reference, or jump to runnable examples.
+
+## Using it in chat (start here)
+
+First make sure your browser chat (ChatGPT, Claude) has a **GitHub connector** enabled so it can read this repository — without one it can't, so use a local coding agent instead. Then open with:
+
+```text
+Use the autocti_assistant repository to answer my PyAutoCTI questions:
+https://github.com/PyAutoLabs/autocti_assistant
+
+First tell me whether you can actually read the repo. If you can't, say so
+plainly — don't answer from memory.
+```
+
+Read order: [AGENTS.md](./AGENTS.md) → [skills/README.md](./skills/README.md) → the relevant skill → [wiki/](./wiki). The assistant can route to examples, explain lensing, review pasted scripts/errors/figures, and draft code; it cannot run code, inspect your files, or guarantee drafts against your installed PyAutoCTI version. For repeated edits, live execution, or multi-session project state, switch to a local coding agent (or Codex web with the repo connected).
+
+## Agent instructions (canonical)
+
+- [AGENTS.md](./AGENTS.md): safety rules, modes, and repository conventions — the source of truth.
+
+## What it can do
+
+- [skills/README.md](./skills/README.md): one-line index of every task skill.
+
+## Reference
+
+- [wiki/core/index.md](./wiki/core/index.md): curated PyAuto* reference — stack, lensing concepts, API catalogues, operations.
+- [wiki/literature/index.md](./wiki/literature/index.md): strong-lensing science wiki — concepts, named entities (surveys, lenses), bibliography.
+
+## Runnable examples & tutorials (elsewhere)
+
+- [autocti_workspace navigator](https://github.com/PyAutoLabs/autocti_workspace/blob/main/llms.txt): paste-friendly task router for end-to-end example scripts and notebooks.
+- [HowToLens](https://github.com/PyAutoLabs/HowToLens): from-first-principles strong-lensing lecture series.

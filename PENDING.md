@@ -1,0 +1,395 @@
+# PENDING — the newborn's growth queue
+
+This assistant was born as a **lightweight-seed** clone: the generic
+machinery was copied from the reference; everything domain-specific below
+is scaffolded, not written. Grow it in use — each line is a future skill,
+wiki page or dataset, in the reference's shape.
+
+- [ ] `.claude/skills/ac_adaptive_pixelization.md` — regenerate for this domain (reference: `.claude/skills/al_adaptive_pixelization.md`)
+- [ ] `.claude/skills/ac_aggregator_bulk_analysis.md` — regenerate for this domain (reference: `.claude/skills/al_aggregator_bulk_analysis.md`)
+- [ ] `.claude/skills/ac_audit_skill_apis.md` — regenerate for this domain (reference: `.claude/skills/al_audit_skill_apis.md`)
+- [ ] `.claude/skills/ac_build_imaging_model.md` — regenerate for this domain (reference: `.claude/skills/al_build_imaging_model.md`)
+- [ ] `.claude/skills/ac_build_interferometer_model.md` — regenerate for this domain (reference: `.claude/skills/al_build_interferometer_model.md`)
+- [ ] `.claude/skills/ac_chain_searches.md` — regenerate for this domain (reference: `.claude/skills/al_chain_searches.md`)
+- [ ] `.claude/skills/ac_cluster_csv_api.md` — regenerate for this domain (reference: `.claude/skills/al_cluster_csv_api.md`)
+- [ ] `.claude/skills/ac_configure_search.md` — regenerate for this domain (reference: `.claude/skills/al_configure_search.md`)
+- [ ] `.claude/skills/ac_custom_analysis.md` — regenerate for this domain (reference: `.claude/skills/al_custom_analysis.md`)
+- [ ] `.claude/skills/ac_custom_profile.md` — regenerate for this domain (reference: `.claude/skills/al_custom_profile.md`)
+- [ ] `.claude/skills/ac_datacube_modeling.md` — regenerate for this domain (reference: `.claude/skills/al_datacube_modeling.md`)
+- [ ] `.claude/skills/ac_debug_fit_failure.md` — regenerate for this domain (reference: `.claude/skills/al_debug_fit_failure.md`)
+- [ ] `.claude/skills/ac_group_lensing.md` — regenerate for this domain (reference: `.claude/skills/al_group_lensing.md`)
+- [ ] `.claude/skills/ac_hierarchicac_inference.md` — regenerate for this domain (reference: `.claude/skills/al_hierarchical_inference.md`)
+- [ ] `.claude/skills/ac_inspect_results_mcp.md` — regenerate for this domain (reference: `.claude/skills/al_inspect_results_mcp.md`)
+- [ ] `.claude/skills/ac_inspect_source_reconstruction.md` — regenerate for this domain (reference: `.claude/skills/al_inspect_source_reconstruction.md`)
+- [ ] `.claude/skills/ac_load_results.md` — regenerate for this domain (reference: `.claude/skills/al_load_results.md`)
+- [ ] `.claude/skills/ac_mge_decomposition.md` — regenerate for this domain (reference: `.claude/skills/al_mge_decomposition.md`)
+- [ ] `.claude/skills/ac_multi_dataset.md` — regenerate for this domain (reference: `.claude/skills/al_multi_dataset.md`)
+- [ ] `.claude/skills/ac_plot_fit_residuals.md` — regenerate for this domain (reference: `.claude/skills/al_plot_fit_residuals.md`)
+- [ ] `.claude/skills/ac_plot_tracer.md` — regenerate for this domain (reference: `.claude/skills/al_plot_tracer.md`)
+- [ ] `.claude/skills/ac_point_source.md` — regenerate for this domain (reference: `.claude/skills/al_point_source.md`)
+- [ ] `.claude/skills/ac_prepare_imaging_data.md` — regenerate for this domain (reference: `.claude/skills/al_prepare_imaging_data.md`)
+- [ ] `.claude/skills/ac_refresh_api_docs.md` — regenerate for this domain (reference: `.claude/skills/al_refresh_api_docs.md`)
+- [ ] `.claude/skills/ac_run_search.md` — regenerate for this domain (reference: `.claude/skills/al_run_search.md`)
+- [ ] `.claude/skills/ac_run_slam_pipeline.md` — regenerate for this domain (reference: `.claude/skills/al_run_slam_pipeline.md`)
+- [ ] `.claude/skills/ac_sensitivity_mapping.md` — regenerate for this domain (reference: `.claude/skills/al_sensitivity_mapping.md`)
+- [ ] `.claude/skills/ac_setup_environment.md` — regenerate for this domain (reference: `.claude/skills/al_setup_environment.md`)
+- [ ] `.claude/skills/ac_simulate_dataset.md` — regenerate for this domain (reference: `.claude/skills/al_simulate_dataset.md`)
+- [ ] `.claude/skills/ac_subhalo_detect.md` — regenerate for this domain (reference: `.claude/skills/al_subhalo_detect.md`)
+- [ ] `.claude/skills/ac_time_delay_cosmography.md` — regenerate for this domain (reference: `.claude/skills/al_time_delay_cosmography.md`)
+- [ ] `.claude/skills/ac_to_notebook.md` — regenerate for this domain (reference: `.claude/skills/al_to_notebook.md`)
+- [ ] `.claude/skills/ac_update_wiki.md` — regenerate for this domain (reference: `.claude/skills/al_update_wiki.md`)
+- [ ] `.claude/skills/ac_weak_lensing.md` — regenerate for this domain (reference: `.claude/skills/al_weak_lensing.md`)
+- [ ] `.claude/skills/euclid_hpc_runs.md` — regenerate for this domain (reference: `.claude/skills/euclid_hpc_runs.md`)
+- [ ] `.claude/skills/euclid_model_lens.md` — regenerate for this domain (reference: `.claude/skills/euclid_model_lens.md`)
+- [ ] `.claude/skills/euclid_prepare_data.md` — regenerate for this domain (reference: `.claude/skills/euclid_prepare_data.md`)
+- [ ] `.claude/skills/euclid_setup_pipeline.md` — regenerate for this domain (reference: `.claude/skills/euclid_setup_pipeline.md`)
+- [ ] `.claude/skills/euclid_workflow_products.md` — regenerate for this domain (reference: `.claude/skills/euclid_workflow_products.md`)
+- [ ] `.claude/skills/init-slam.md` — regenerate for this domain (reference: `.claude/skills/init-slam.md`)
+- [ ] `README.md` — regenerate for this domain (reference: `README.md`)
+- [ ] `benchmarks/RESULTS.md` — regenerate for this domain (reference: `benchmarks/RESULTS.md`)
+- [ ] `benchmarks/prompts/easy_cosmos_web_ring.md` — regenerate for this domain (reference: `benchmarks/prompts/easy_cosmos_web_ring.md`)
+- [ ] `benchmarks/prompts/hard_group_multi.md` — regenerate for this domain (reference: `benchmarks/prompts/hard_group_multi.md`)
+- [ ] `benchmarks/prompts/medium_slacs0946_subhalo.md` — regenerate for this domain (reference: `benchmarks/prompts/medium_slacs0946_subhalo.md`)
+- [ ] `benchmarks/prompts/teacher_workflow.md` — regenerate for this domain (reference: `benchmarks/prompts/teacher_workflow.md`)
+- [ ] `benchmarks/runs/.gitkeep` — regenerate for this domain (reference: `benchmarks/runs/.gitkeep`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F115W/data.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F115W/data.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F115W/info.json` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F115W/info.json`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F115W/mask_extra_galaxies.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F115W/mask_extra_galaxies.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F115W/noise_map.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F115W/noise_map.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F115W/psf.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F115W/psf.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F150W/data.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F150W/data.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F150W/info.json` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F150W/info.json`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F150W/mask_extra_galaxies.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F150W/mask_extra_galaxies.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F150W/noise_map.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F150W/noise_map.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F150W/psf.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F150W/psf.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F277W/data.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F277W/data.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F277W/info.json` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F277W/info.json`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F277W/mask_extra_galaxies.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F277W/mask_extra_galaxies.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F277W/noise_map.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F277W/noise_map.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F277W/psf.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F277W/psf.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F444W/data.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F444W/data.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F444W/info.json` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F444W/info.json`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F444W/mask_extra_galaxies.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F444W/mask_extra_galaxies.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F444W/noise_map.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F444W/noise_map.fits`)
+- [ ] `dataset/imaging/cosmos_web_ring/wavebands/F444W/psf.fits` — regenerate for this domain (reference: `dataset/imaging/cosmos_web_ring/wavebands/F444W/psf.fits`)
+- [ ] `dataset/imaging/slacs0946+1006/data.fits` — regenerate for this domain (reference: `dataset/imaging/slacs0946+1006/data.fits`)
+- [ ] `dataset/imaging/slacs0946+1006/info.json` — regenerate for this domain (reference: `dataset/imaging/slacs0946+1006/info.json`)
+- [ ] `dataset/imaging/slacs0946+1006/mask_extra_galaxies.fits` — regenerate for this domain (reference: `dataset/imaging/slacs0946+1006/mask_extra_galaxies.fits`)
+- [ ] `dataset/imaging/slacs0946+1006/noise_map.fits` — regenerate for this domain (reference: `dataset/imaging/slacs0946+1006/noise_map.fits`)
+- [ ] `dataset/imaging/slacs0946+1006/positions.json` — regenerate for this domain (reference: `dataset/imaging/slacs0946+1006/positions.json`)
+- [ ] `dataset/imaging/slacs0946+1006/psf.fits` — regenerate for this domain (reference: `dataset/imaging/slacs0946+1006/psf.fits`)
+- [ ] `hpc/.gitignore` — regenerate for this domain (reference: `hpc/.gitignore`)
+- [ ] `hpc/__init__.py` — regenerate for this domain (reference: `hpc/__init__.py`)
+- [ ] `hpc/batch_cpu/error/.gitignore` — regenerate for this domain (reference: `hpc/batch_cpu/error/.gitignore`)
+- [ ] `hpc/batch_cpu/output/.gitignore` — regenerate for this domain (reference: `hpc/batch_cpu/output/.gitignore`)
+- [ ] `hpc/batch_cpu/template` — regenerate for this domain (reference: `hpc/batch_cpu/template`)
+- [ ] `hpc/batch_gpu/error/.gitignore` — regenerate for this domain (reference: `hpc/batch_gpu/error/.gitignore`)
+- [ ] `hpc/batch_gpu/output/.gitignore` — regenerate for this domain (reference: `hpc/batch_gpu/output/.gitignore`)
+- [ ] `hpc/batch_gpu/template` — regenerate for this domain (reference: `hpc/batch_gpu/template`)
+- [ ] `hpc/sync` — regenerate for this domain (reference: `hpc/sync`)
+- [ ] `hpc/sync.conf.example` — regenerate for this domain (reference: `hpc/sync.conf.example`)
+- [ ] `hpc/sync_jump.conf.example` — regenerate for this domain (reference: `hpc/sync_jump.conf.example`)
+- [ ] `hpc/template.py` — regenerate for this domain (reference: `hpc/template.py`)
+- [ ] `paper/.gitignore` — regenerate for this domain (reference: `paper/.gitignore`)
+- [ ] `paper/README.md` — regenerate for this domain (reference: `paper/README.md`)
+- [ ] `paper/paper.bib` — regenerate for this domain (reference: `paper/paper.bib`)
+- [ ] `paper/paper.md` — regenerate for this domain (reference: `paper/paper.md`)
+- [ ] `scripts/model_cosmos_web_ring.py` — regenerate for this domain (reference: `scripts/model_cosmos_web_ring.py`)
+- [ ] `scripts/prepare_cosmos_web_ring.py` — regenerate for this domain (reference: `scripts/prepare_cosmos_web_ring.py`)
+- [ ] `skills/ac_adaptive_pixelization.md` — regenerate for this domain (reference: `skills/al_adaptive_pixelization.md`)
+- [ ] `skills/ac_aggregator_bulk_analysis.md` — regenerate for this domain (reference: `skills/al_aggregator_bulk_analysis.md`)
+- [ ] `skills/ac_audit_skill_apis.md` — regenerate for this domain (reference: `skills/al_audit_skill_apis.md`)
+- [ ] `skills/ac_build_imaging_model.md` — regenerate for this domain (reference: `skills/al_build_imaging_model.md`)
+- [ ] `skills/ac_build_interferometer_model.md` — regenerate for this domain (reference: `skills/al_build_interferometer_model.md`)
+- [ ] `skills/ac_chain_searches.md` — regenerate for this domain (reference: `skills/al_chain_searches.md`)
+- [ ] `skills/ac_cluster_csv_api.md` — regenerate for this domain (reference: `skills/al_cluster_csv_api.md`)
+- [ ] `skills/ac_configure_search.md` — regenerate for this domain (reference: `skills/al_configure_search.md`)
+- [ ] `skills/ac_custom_analysis.md` — regenerate for this domain (reference: `skills/al_custom_analysis.md`)
+- [ ] `skills/ac_custom_profile.md` — regenerate for this domain (reference: `skills/al_custom_profile.md`)
+- [ ] `skills/ac_datacube_modeling.md` — regenerate for this domain (reference: `skills/al_datacube_modeling.md`)
+- [ ] `skills/ac_debug_fit_failure.md` — regenerate for this domain (reference: `skills/al_debug_fit_failure.md`)
+- [ ] `skills/ac_group_lensing.md` — regenerate for this domain (reference: `skills/al_group_lensing.md`)
+- [ ] `skills/ac_hierarchicac_inference.md` — regenerate for this domain (reference: `skills/al_hierarchical_inference.md`)
+- [ ] `skills/ac_ingest_paper.md` — regenerate for this domain (reference: `skills/al_ingest_paper.md`)
+- [ ] `skills/ac_inspect_results_mcp.md` — regenerate for this domain (reference: `skills/al_inspect_results_mcp.md`)
+- [ ] `skills/ac_inspect_source_reconstruction.md` — regenerate for this domain (reference: `skills/al_inspect_source_reconstruction.md`)
+- [ ] `skills/ac_load_results.md` — regenerate for this domain (reference: `skills/al_load_results.md`)
+- [ ] `skills/ac_mge_decomposition.md` — regenerate for this domain (reference: `skills/al_mge_decomposition.md`)
+- [ ] `skills/ac_multi_dataset.md` — regenerate for this domain (reference: `skills/al_multi_dataset.md`)
+- [ ] `skills/ac_plot_fit_residuals.md` — regenerate for this domain (reference: `skills/al_plot_fit_residuals.md`)
+- [ ] `skills/ac_plot_tracer.md` — regenerate for this domain (reference: `skills/al_plot_tracer.md`)
+- [ ] `skills/ac_point_source.md` — regenerate for this domain (reference: `skills/al_point_source.md`)
+- [ ] `skills/ac_prepare_imaging_data.md` — regenerate for this domain (reference: `skills/al_prepare_imaging_data.md`)
+- [ ] `skills/ac_refresh_api_docs.md` — regenerate for this domain (reference: `skills/al_refresh_api_docs.md`)
+- [ ] `skills/ac_run_search.md` — regenerate for this domain (reference: `skills/al_run_search.md`)
+- [ ] `skills/ac_run_slam_pipeline.md` — regenerate for this domain (reference: `skills/al_run_slam_pipeline.md`)
+- [ ] `skills/ac_sensitivity_mapping.md` — regenerate for this domain (reference: `skills/al_sensitivity_mapping.md`)
+- [ ] `skills/ac_setup_environment.md` — regenerate for this domain (reference: `skills/al_setup_environment.md`)
+- [ ] `skills/ac_simulate_dataset.md` — regenerate for this domain (reference: `skills/al_simulate_dataset.md`)
+- [ ] `skills/ac_subhalo_detect.md` — regenerate for this domain (reference: `skills/al_subhalo_detect.md`)
+- [ ] `skills/ac_time_delay_cosmography.md` — regenerate for this domain (reference: `skills/al_time_delay_cosmography.md`)
+- [ ] `skills/ac_to_notebook.md` — regenerate for this domain (reference: `skills/al_to_notebook.md`)
+- [ ] `skills/ac_update_wiki.md` — regenerate for this domain (reference: `skills/al_update_wiki.md`)
+- [ ] `skills/ac_weak_lensing.md` — regenerate for this domain (reference: `skills/al_weak_lensing.md`)
+- [ ] `skills/euclid_hpc_runs.md` — regenerate for this domain (reference: `skills/euclid_hpc_runs.md`)
+- [ ] `skills/euclid_model_lens.md` — regenerate for this domain (reference: `skills/euclid_model_lens.md`)
+- [ ] `skills/euclid_prepare_data.md` — regenerate for this domain (reference: `skills/euclid_prepare_data.md`)
+- [ ] `skills/euclid_setup_pipeline.md` — regenerate for this domain (reference: `skills/euclid_setup_pipeline.md`)
+- [ ] `skills/euclid_workflow_products.md` — regenerate for this domain (reference: `skills/euclid_workflow_products.md`)
+- [ ] `skills/init-slam.md` — regenerate for this domain (reference: `skills/init-slam.md`)
+- [ ] `wiki/core/README.md` — regenerate for this domain (reference: `wiki/core/README.md`)
+- [ ] `wiki/core/api/aggregator.md` — regenerate for this domain (reference: `wiki/core/api/aggregator.md`)
+- [ ] `wiki/core/api/analysis_objects.md` — regenerate for this domain (reference: `wiki/core/api/analysis_objects.md`)
+- [ ] `wiki/core/api/configuration.md` — regenerate for this domain (reference: `wiki/core/api/configuration.md`)
+- [ ] `wiki/core/api/csv_api.md` — regenerate for this domain (reference: `wiki/core/api/csv_api.md`)
+- [ ] `wiki/core/api/datacube.md` — regenerate for this domain (reference: `wiki/core/api/datacube.md`)
+- [ ] `wiki/core/api/datasets.md` — regenerate for this domain (reference: `wiki/core/api/datasets.md`)
+- [ ] `wiki/core/api/light_profile_catalog.md` — regenerate for this domain (reference: `wiki/core/api/light_profile_catalog.md`)
+- [ ] `wiki/core/api/mass_profile_catalog.md` — regenerate for this domain (reference: `wiki/core/api/mass_profile_catalog.md`)
+- [ ] `wiki/core/api/plotting.md` — regenerate for this domain (reference: `wiki/core/api/plotting.md`)
+- [ ] `wiki/core/api/searches.md` — regenerate for this domain (reference: `wiki/core/api/searches.md`)
+- [ ] `wiki/core/api_audit_baseline.json` — regenerate for this domain (reference: `wiki/core/api_audit_baseline.json`)
+- [ ] `wiki/core/concepts/cosmology_and_units.md` — regenerate for this domain (reference: `wiki/core/concepts/cosmology_and_units.md`)
+- [ ] `wiki/core/concepts/extra_galaxies_and_noise_scaling.md` — regenerate for this domain (reference: `wiki/core/concepts/extra_galaxies_and_noise_scaling.md`)
+- [ ] `wiki/core/concepts/galaxy_and_plane.md` — regenerate for this domain (reference: `wiki/core/concepts/galaxy_and_plane.md`)
+- [ ] `wiki/core/concepts/grids_and_masks.md` — regenerate for this domain (reference: `wiki/core/concepts/grids_and_masks.md`)
+- [ ] `wiki/core/concepts/group_and_cluster_lensing.md` — regenerate for this domain (reference: `wiki/core/concepts/group_and_cluster_lensing.md`)
+- [ ] `wiki/core/concepts/hierarchicac_models.md` — regenerate for this domain (reference: `wiki/core/concepts/hierarchical_models.md`)
+- [ ] `wiki/core/concepts/interferometer_theory.md` — regenerate for this domain (reference: `wiki/core/concepts/interferometer_theory.md`)
+- [ ] `wiki/core/concepts/inversions_and_pixelizations.md` — regenerate for this domain (reference: `wiki/core/concepts/inversions_and_pixelizations.md`)
+- [ ] `wiki/core/concepts/lensing_basics.md` — regenerate for this domain (reference: `wiki/core/concepts/lensing_basics.md`)
+- [ ] `wiki/core/concepts/light_profiles.md` — regenerate for this domain (reference: `wiki/core/concepts/light_profiles.md`)
+- [ ] `wiki/core/concepts/mass_profiles.md` — regenerate for this domain (reference: `wiki/core/concepts/mass_profiles.md`)
+- [ ] `wiki/core/concepts/multi_wavelength.md` — regenerate for this domain (reference: `wiki/core/concepts/multi_wavelength.md`)
+- [ ] `wiki/core/concepts/non_linear_search.md` — regenerate for this domain (reference: `wiki/core/concepts/non_linear_search.md`)
+- [ ] `wiki/core/concepts/point_source.md` — regenerate for this domain (reference: `wiki/core/concepts/point_source.md`)
+- [ ] `wiki/core/concepts/samples_and_posteriors.md` — regenerate for this domain (reference: `wiki/core/concepts/samples_and_posteriors.md`)
+- [ ] `wiki/core/concepts/sensitivity_mapping.md` — regenerate for this domain (reference: `wiki/core/concepts/sensitivity_mapping.md`)
+- [ ] `wiki/core/concepts/slam_pipeline.md` — regenerate for this domain (reference: `wiki/core/concepts/slam_pipeline.md`)
+- [ ] `wiki/core/concepts/substructure_and_subhalos.md` — regenerate for this domain (reference: `wiki/core/concepts/substructure_and_subhalos.md`)
+- [ ] `wiki/core/concepts/time_delay_cosmography.md` — regenerate for this domain (reference: `wiki/core/concepts/time_delay_cosmography.md`)
+- [ ] `wiki/core/concepts/tracer.md` — regenerate for this domain (reference: `wiki/core/concepts/tracer.md`)
+- [ ] `wiki/core/concepts/weak_lensing.md` — regenerate for this domain (reference: `wiki/core/concepts/weak_lensing.md`)
+- [ ] `wiki/core/external/howtolens.md` — regenerate for this domain (reference: `wiki/core/external/howtolens.md`)
+- [ ] `wiki/core/external/index.md` — regenerate for this domain (reference: `wiki/core/external/index.md`)
+- [ ] `wiki/core/external/rtd.md` — regenerate for this domain (reference: `wiki/core/external/rtd.md`)
+- [ ] `wiki/core/external/skill_citation_map.md` — regenerate for this domain (reference: `wiki/core/external/skill_citation_map.md`)
+- [ ] `wiki/core/external/workspace.md` — regenerate for this domain (reference: `wiki/core/external/workspace.md`)
+- [ ] `wiki/core/index.md` — regenerate for this domain (reference: `wiki/core/index.md`)
+- [ ] `wiki/core/operations/dataset.md` — regenerate for this domain (reference: `wiki/core/operations/dataset.md`)
+- [ ] `wiki/core/operations/hpc.md` — regenerate for this domain (reference: `wiki/core/operations/hpc.md`)
+- [ ] `wiki/core/operations/hpc_infrastructure.md` — regenerate for this domain (reference: `wiki/core/operations/hpc_infrastructure.md`)
+- [ ] `wiki/core/operations/installation.md` — regenerate for this domain (reference: `wiki/core/operations/installation.md`)
+- [ ] `wiki/core/operations/sandbox.md` — regenerate for this domain (reference: `wiki/core/operations/sandbox.md`)
+- [ ] `wiki/core/stack/autoarray.md` — regenerate for this domain (reference: `wiki/core/stack/autoarray.md`)
+- [ ] `wiki/core/stack/autoconf.md` — regenerate for this domain (reference: `wiki/core/stack/autoconf.md`)
+- [ ] `wiki/core/stack/autofit.md` — regenerate for this domain (reference: `wiki/core/stack/autofit.md`)
+- [ ] `wiki/core/stack/autogalaxy.md` — regenerate for this domain (reference: `wiki/core/stack/autogalaxy.md`)
+- [ ] `wiki/core/stack/autocti.md` — regenerate for this domain (reference: `wiki/core/stack/autolens.md`)
+- [ ] `wiki/core/stack/overview.md` — regenerate for this domain (reference: `wiki/core/stack/overview.md`)
+- [ ] `wiki/euclid/AGENTS.md` — regenerate for this domain (reference: `wiki/euclid/AGENTS.md`)
+- [ ] `wiki/euclid/CLAUDE.md` — regenerate for this domain (reference: `wiki/euclid/CLAUDE.md`)
+- [ ] `wiki/euclid/bibliography/README.md` — regenerate for this domain (reference: `wiki/euclid/bibliography/README.md`)
+- [ ] `wiki/euclid/bibliography/bibkey_aliases.yaml` — regenerate for this domain (reference: `wiki/euclid/bibliography/bibkey_aliases.yaml`)
+- [ ] `wiki/euclid/bibliography/euclid.bib` — regenerate for this domain (reference: `wiki/euclid/bibliography/euclid.bib`)
+- [ ] `wiki/euclid/concepts/euclid-photo-z.md` — regenerate for this domain (reference: `wiki/euclid/concepts/euclid-photo-z.md`)
+- [ ] `wiki/euclid/concepts/euclid-psf.md` — regenerate for this domain (reference: `wiki/euclid/concepts/euclid-psf.md`)
+- [ ] `wiki/euclid/concepts/psf-homogenisation.md` — regenerate for this domain (reference: `wiki/euclid/concepts/psf-homogenisation.md`)
+- [ ] `wiki/euclid/concepts/zero-point-corrections.md` — regenerate for this domain (reference: `wiki/euclid/concepts/zero-point-corrections.md`)
+- [ ] `wiki/euclid/entities/euclid-mission.md` — regenerate for this domain (reference: `wiki/euclid/entities/euclid-mission.md`)
+- [ ] `wiki/euclid/entities/euclid-wide-survey.md` — regenerate for this domain (reference: `wiki/euclid/entities/euclid-wide-survey.md`)
+- [ ] `wiki/euclid/entities/ext-surveys.md` — regenerate for this domain (reference: `wiki/euclid/entities/ext-surveys.md`)
+- [ ] `wiki/euclid/entities/nisp.md` — regenerate for this domain (reference: `wiki/euclid/entities/nisp.md`)
+- [ ] `wiki/euclid/entities/ou-phz.md` — regenerate for this domain (reference: `wiki/euclid/entities/ou-phz.md`)
+- [ ] `wiki/euclid/entities/q1-dr1-releases.md` — regenerate for this domain (reference: `wiki/euclid/entities/q1-dr1-releases.md`)
+- [ ] `wiki/euclid/entities/vis.md` — regenerate for this domain (reference: `wiki/euclid/entities/vis.md`)
+- [ ] `wiki/euclid/index.md` — regenerate for this domain (reference: `wiki/euclid/index.md`)
+- [ ] `wiki/euclid/log.md` — regenerate for this domain (reference: `wiki/euclid/log.md`)
+- [ ] `wiki/euclid/sources/euclid-dr1-image-processing.md` — regenerate for this domain (reference: `wiki/euclid/sources/euclid-dr1-image-processing.md`)
+- [ ] `wiki/euclid/sources/euclid-forecasts.md` — regenerate for this domain (reference: `wiki/euclid/sources/euclid-forecasts.md`)
+- [ ] `wiki/euclid/sources/euclid-mission-data.md` — regenerate for this domain (reference: `wiki/euclid/sources/euclid-mission-data.md`)
+- [ ] `wiki/euclid/sources/euclid-strong-lensing.md` — regenerate for this domain (reference: `wiki/euclid/sources/euclid-strong-lensing.md`)
+- [ ] `wiki/literature/AGENTS.md` — regenerate for this domain (reference: `wiki/literature/AGENTS.md`)
+- [ ] `wiki/literature/CLAUDE.md` — regenerate for this domain (reference: `wiki/literature/CLAUDE.md`)
+- [ ] `wiki/literature/README.md` — regenerate for this domain (reference: `wiki/literature/README.md`)
+- [ ] `wiki/literature/bibliography/README.md` — regenerate for this domain (reference: `wiki/literature/bibliography/README.md`)
+- [ ] `wiki/literature/bibliography/autocti_literature.bib` — regenerate for this domain (reference: `wiki/literature/bibliography/autolens_literature.bib`)
+- [ ] `wiki/literature/bibliography/bibkey_aliases.yaml` — regenerate for this domain (reference: `wiki/literature/bibliography/bibkey_aliases.yaml`)
+- [ ] `wiki/literature/concepts/bayesian-inference-lensing.md` — regenerate for this domain (reference: `wiki/literature/concepts/bayesian-inference-lensing.md`)
+- [ ] `wiki/literature/concepts/bulge-halo-decomposition.md` — regenerate for this domain (reference: `wiki/literature/concepts/bulge-halo-decomposition.md`)
+- [ ] `wiki/literature/concepts/cluster-lensing.md` — regenerate for this domain (reference: `wiki/literature/concepts/cluster-lensing.md`)
+- [ ] `wiki/literature/concepts/dark-matter-physics.md` — regenerate for this domain (reference: `wiki/literature/concepts/dark-matter-physics.md`)
+- [ ] `wiki/literature/concepts/dark-matter-substructure.md` — regenerate for this domain (reference: `wiki/literature/concepts/dark-matter-substructure.md`)
+- [ ] `wiki/literature/concepts/deep-learning-lensing.md` — regenerate for this domain (reference: `wiki/literature/concepts/deep-learning-lensing.md`)
+- [ ] `wiki/literature/concepts/einstein-radius.md` — regenerate for this domain (reference: `wiki/literature/concepts/einstein-radius.md`)
+- [ ] `wiki/literature/concepts/external-convergence-shear.md` — regenerate for this domain (reference: `wiki/literature/concepts/external-convergence-shear.md`)
+- [ ] `wiki/literature/concepts/flux-ratio-anomalies.md` — regenerate for this domain (reference: `wiki/literature/concepts/flux-ratio-anomalies.md`)
+- [ ] `wiki/literature/concepts/gr-tests.md` — regenerate for this domain (reference: `wiki/literature/concepts/gr-tests.md`)
+- [ ] `wiki/literature/concepts/gravitational-imaging.md` — regenerate for this domain (reference: `wiki/literature/concepts/gravitational-imaging.md`)
+- [ ] `wiki/literature/concepts/hubble-tension.md` — regenerate for this domain (reference: `wiki/literature/concepts/hubble-tension.md`)
+- [ ] `wiki/literature/concepts/interferometric-lensing.md` — regenerate for this domain (reference: `wiki/literature/concepts/interferometric-lensing.md`)
+- [ ] `wiki/literature/concepts/kinematics-and-lensing.md` — regenerate for this domain (reference: `wiki/literature/concepts/kinematics-and-lensing.md`)
+- [ ] `wiki/literature/concepts/lens-equation.md` — regenerate for this domain (reference: `wiki/literature/concepts/lens-equation.md`)
+- [ ] `wiki/literature/concepts/lens-finding.md` — regenerate for this domain (reference: `wiki/literature/concepts/lens-finding.md`)
+- [ ] `wiki/literature/concepts/lens-statistics.md` — regenerate for this domain (reference: `wiki/literature/concepts/lens-statistics.md`)
+- [ ] `wiki/literature/concepts/lensed-source-science.md` — regenerate for this domain (reference: `wiki/literature/concepts/lensed-source-science.md`)
+- [ ] `wiki/literature/concepts/lensed-supernovae.md` — regenerate for this domain (reference: `wiki/literature/concepts/lensed-supernovae.md`)
+- [ ] `wiki/literature/concepts/line-of-sight-effects.md` — regenerate for this domain (reference: `wiki/literature/concepts/line-of-sight-effects.md`)
+- [ ] `wiki/literature/concepts/mass-models.md` — regenerate for this domain (reference: `wiki/literature/concepts/mass-models.md`)
+- [ ] `wiki/literature/concepts/mass-sheet-degeneracy.md` — regenerate for this domain (reference: `wiki/literature/concepts/mass-sheet-degeneracy.md`)
+- [ ] `wiki/literature/concepts/mcmc-sampling.md` — regenerate for this domain (reference: `wiki/literature/concepts/mcmc-sampling.md`)
+- [ ] `wiki/literature/concepts/microlensing-imf.md` — regenerate for this domain (reference: `wiki/literature/concepts/microlensing-imf.md`)
+- [ ] `wiki/literature/concepts/multipoles.md` — regenerate for this domain (reference: `wiki/literature/concepts/multipoles.md`)
+- [ ] `wiki/literature/concepts/nested-sampling.md` — regenerate for this domain (reference: `wiki/literature/concepts/nested-sampling.md`)
+- [ ] `wiki/literature/concepts/radial-angular-degeneracy.md` — regenerate for this domain (reference: `wiki/literature/concepts/radial-angular-degeneracy.md`)
+- [ ] `wiki/literature/concepts/regularization.md` — regenerate for this domain (reference: `wiki/literature/concepts/regularization.md`)
+- [ ] `wiki/literature/concepts/selection-effects.md` — regenerate for this domain (reference: `wiki/literature/concepts/selection-effects.md`)
+- [ ] `wiki/literature/concepts/shear-ellipticity-degeneracy.md` — regenerate for this domain (reference: `wiki/literature/concepts/shear-ellipticity-degeneracy.md`)
+- [ ] `wiki/literature/concepts/smbh-from-lensing.md` — regenerate for this domain (reference: `wiki/literature/concepts/smbh-from-lensing.md`)
+- [ ] `wiki/literature/concepts/source-position-transformation.md` — regenerate for this domain (reference: `wiki/literature/concepts/source-position-transformation.md`)
+- [ ] `wiki/literature/concepts/source-reconstruction.md` — regenerate for this domain (reference: `wiki/literature/concepts/source-reconstruction.md`)
+- [ ] `wiki/literature/concepts/strong-lensing-overview.md` — regenerate for this domain (reference: `wiki/literature/concepts/strong-lensing-overview.md`)
+- [ ] `wiki/literature/concepts/time-delay-cosmography.md` — regenerate for this domain (reference: `wiki/literature/concepts/time-delay-cosmography.md`)
+- [ ] `wiki/literature/concepts/time-delay-distance.md` — regenerate for this domain (reference: `wiki/literature/concepts/time-delay-distance.md`)
+- [ ] `wiki/literature/entities/abell-1201.md` — regenerate for this domain (reference: `wiki/literature/entities/abell-1201.md`)
+- [ ] `wiki/literature/entities/bells-gallery.md` — regenerate for this domain (reference: `wiki/literature/entities/bells-gallery.md`)
+- [ ] `wiki/literature/entities/cosmic-horseshoe.md` — regenerate for this domain (reference: `wiki/literature/entities/cosmic-horseshoe.md`)
+- [ ] `wiki/literature/entities/cosmos-web-ring.md` — regenerate for this domain (reference: `wiki/literature/entities/cosmos-web-ring.md`)
+- [ ] `wiki/literature/entities/des-lenses.md` — regenerate for this domain (reference: `wiki/literature/entities/des-lenses.md`)
+- [ ] `wiki/literature/entities/euclid-q1.md` — regenerate for this domain (reference: `wiki/literature/entities/euclid-q1.md`)
+- [ ] `wiki/literature/entities/h0licow.md` — regenerate for this domain (reference: `wiki/literature/entities/h0licow.md`)
+- [ ] `wiki/literature/entities/hsc-survey-lenses.md` — regenerate for this domain (reference: `wiki/literature/entities/hsc-survey-lenses.md`)
+- [ ] `wiki/literature/entities/hubble-frontier-fields.md` — regenerate for this domain (reference: `wiki/literature/entities/hubble-frontier-fields.md`)
+- [ ] `wiki/literature/entities/lens-finding-challenge.md` — regenerate for this domain (reference: `wiki/literature/entities/lens-finding-challenge.md`)
+- [ ] `wiki/literature/entities/lenstronomy.md` — regenerate for this domain (reference: `wiki/literature/entities/lenstronomy.md`)
+- [ ] `wiki/literature/entities/pyautofit.md` — regenerate for this domain (reference: `wiki/literature/entities/pyautofit.md`)
+- [ ] `wiki/literature/entities/pyautocti.md` — regenerate for this domain (reference: `wiki/literature/entities/pyautolens.md`)
+- [ ] `wiki/literature/entities/razor-arc.md` — regenerate for this domain (reference: `wiki/literature/entities/razor-arc.md`)
+- [ ] `wiki/literature/entities/sl2s.md` — regenerate for this domain (reference: `wiki/literature/entities/sl2s.md`)
+- [ ] `wiki/literature/entities/slacs.md` — regenerate for this domain (reference: `wiki/literature/entities/slacs.md`)
+- [ ] `wiki/literature/entities/slam-pipeline.md` — regenerate for this domain (reference: `wiki/literature/entities/slam-pipeline.md`)
+- [ ] `wiki/literature/entities/space-warps.md` — regenerate for this domain (reference: `wiki/literature/entities/space-warps.md`)
+- [ ] `wiki/literature/entities/tdcosmo.md` — regenerate for this domain (reference: `wiki/literature/entities/tdcosmo.md`)
+- [ ] `wiki/literature/index.md` — regenerate for this domain (reference: `wiki/literature/index.md`)
+- [ ] `wiki/literature/log.md` — regenerate for this domain (reference: `wiki/literature/log.md`)
+- [ ] `wiki/literature/sources/bayesian-inference-methods.md` — regenerate for this domain (reference: `wiki/literature/sources/bayesian-inference-methods.md`)
+- [ ] `wiki/literature/sources/bulge-halo.md` — regenerate for this domain (reference: `wiki/literature/sources/bulge-halo.md`)
+- [ ] `wiki/literature/sources/cluster-lensing.md` — regenerate for this domain (reference: `wiki/literature/sources/cluster-lensing.md`)
+- [ ] `wiki/literature/sources/dark-matter-physics.md` — regenerate for this domain (reference: `wiki/literature/sources/dark-matter-physics.md`)
+- [ ] `wiki/literature/sources/dark-matter-substructure.md` — regenerate for this domain (reference: `wiki/literature/sources/dark-matter-substructure.md`)
+- [ ] `wiki/literature/sources/deep-learning-lensing.md` — regenerate for this domain (reference: `wiki/literature/sources/deep-learning-lensing.md`)
+- [ ] `wiki/literature/sources/degeneracies-systematics.md` — regenerate for this domain (reference: `wiki/literature/sources/degeneracies-systematics.md`)
+- [ ] `wiki/literature/sources/external-shear-los.md` — regenerate for this domain (reference: `wiki/literature/sources/external-shear-los.md`)
+- [ ] `wiki/literature/sources/flux-ratios.md` — regenerate for this domain (reference: `wiki/literature/sources/flux-ratios.md`)
+- [ ] `wiki/literature/sources/galaxy-formation.md` — regenerate for this domain (reference: `wiki/literature/sources/galaxy-formation.md`)
+- [ ] `wiki/literature/sources/gr-cosmology.md` — regenerate for this domain (reference: `wiki/literature/sources/gr-cosmology.md`)
+- [ ] `wiki/literature/sources/interferometric-lensing.md` — regenerate for this domain (reference: `wiki/literature/sources/interferometric-lensing.md`)
+- [ ] `wiki/literature/sources/kinematics.md` — regenerate for this domain (reference: `wiki/literature/sources/kinematics.md`)
+- [ ] `wiki/literature/sources/lens-finding.md` — regenerate for this domain (reference: `wiki/literature/sources/lens-finding.md`)
+- [ ] `wiki/literature/sources/lens-modeling-methods.md` — regenerate for this domain (reference: `wiki/literature/sources/lens-modeling-methods.md`)
+- [ ] `wiki/literature/sources/lens-statistics.md` — regenerate for this domain (reference: `wiki/literature/sources/lens-statistics.md`)
+- [ ] `wiki/literature/sources/lens-surveys.md` — regenerate for this domain (reference: `wiki/literature/sources/lens-surveys.md`)
+- [ ] `wiki/literature/sources/lensed-source-science.md` — regenerate for this domain (reference: `wiki/literature/sources/lensed-source-science.md`)
+- [ ] `wiki/literature/sources/lensed-supernovae.md` — regenerate for this domain (reference: `wiki/literature/sources/lensed-supernovae.md`)
+- [ ] `wiki/literature/sources/mass-models.md` — regenerate for this domain (reference: `wiki/literature/sources/mass-models.md`)
+- [ ] `wiki/literature/sources/microlensing-imf.md` — regenerate for this domain (reference: `wiki/literature/sources/microlensing-imf.md`)
+- [ ] `wiki/literature/sources/multipoles.md` — regenerate for this domain (reference: `wiki/literature/sources/multipoles.md`)
+- [ ] `wiki/literature/sources/selection-effects.md` — regenerate for this domain (reference: `wiki/literature/sources/selection-effects.md`)
+- [ ] `wiki/literature/sources/smbh-vlbi.md` — regenerate for this domain (reference: `wiki/literature/sources/smbh-vlbi.md`)
+- [ ] `wiki/literature/sources/source-reconstruction.md` — regenerate for this domain (reference: `wiki/literature/sources/source-reconstruction.md`)
+- [ ] `wiki/literature/sources/specific-lenses.md` — regenerate for this domain (reference: `wiki/literature/sources/specific-lenses.md`)
+- [ ] `wiki/literature/sources/time-delay-cosmography.md` — regenerate for this domain (reference: `wiki/literature/sources/time-delay-cosmography.md`)
+- [ ] `wiki/literature/sources/unclassified.md` — regenerate for this domain (reference: `wiki/literature/sources/unclassified.md`)
+- [ ] review `benchmarks/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/.gitignore` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/general.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/grids.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/logging.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/non_linear/GridSearch.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/non_linear/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/non_linear/mcmc.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/non_linear/mle.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/non_linear/nest.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/notation.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/output.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/basis.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/cosmology.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/dataset_model.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/galaxy/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/galaxy/redshift.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/chameleon.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/dev_vaucouleurs.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/eff.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/exponential.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/exponentiac_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/gaussian.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/moffat.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/sersic.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/sersic_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/shapelets/cartesian.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/shapelets/exponential.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/shapelets/polar.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear_operated/gaussian.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear_operated/moffat.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/operated/gaussian.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/operated/moffat.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/operated/sersic.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/chameleon.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/dev_vaucouleurs.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/eff.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/exponential.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/exponentiac_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/gaussian.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/moffat.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/sersic.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/sersic_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/dark/gnfw.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/dark/gnfw_mcr.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/dark/gnfw_viriac_mass_conc.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/dark/nfw.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/dark/nfw_mcr.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/dark/nfw_mcr_scatter.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/dark/nfw_truncated.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/dark/nfw_truncated_mcr.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/point/point.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/point/smbh.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/sheets/externac_shear.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/sheets/mass_sheet.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/stellar/chameleon.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/stellar/dev_vaucouleurs.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/stellar/exponential.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/stellar/gaussian.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/stellar/gaussian_gradient.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/stellar/sersic.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/stellar/sersic_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/stellar/sersic_gradient.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/total/isothermal.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/total/isothermac_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/total/power_law.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/total/power_law_broken.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/total/power_law_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/total/power_law_multipole.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mesh/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mesh/delaunay.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mesh/rectangular_adapt_density.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mesh/rectangular_adapt_image.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mesh/rectangular_uniform.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/point_sources.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/regularization/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/regularization/adapt.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/regularization/adapt_split.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/regularization/constant.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/regularization/constant_split.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/regularization/matern_adapt_kernel.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/regularization/matern_adapt_kernel_rho.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/regularization/matern_kernel.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/regularization/zeroth.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/visualize/README.md` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/visualize/general.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/visualize/plots.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/visualize/plots_search.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `llms.txt` — copied with name substitutions only; adapt values to this domain
