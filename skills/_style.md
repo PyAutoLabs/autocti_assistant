@@ -67,7 +67,7 @@ This is the rule that distinguishes the workspace from a tutorial workspace.
 Every Python script the agent saves — whether to `scripts/` or `scripts/scratch/` — follows the
 PyAutoCTI **workspace** style, not ad-hoc banner comments. It is the same style used by
 every script in `autocti_workspace/scripts/` (canonical example:
-`autocti_workspace:scripts/imaging/start_here.py`), and it exists for two reasons: it
+`autocti_workspace:scripts/dataset_1d/modeling/start_here.py`), and it exists for two reasons: it
 keeps the science and inference narrative inline with the code, and it makes the script
 mechanically convertible to a Jupyter notebook — each top-level `"""..."""` block becomes a
 markdown cell and the code between blocks becomes a code cell.
