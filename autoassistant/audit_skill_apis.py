@@ -58,11 +58,14 @@ BASELINE_REL_PATH = Path("wiki") / "core" / "api_audit_baseline.json"
 # Modules whose public surface we hash. The five library roots carry
 # `__version__`; `autocti.plot` is hashed too (it is where the plot API lives)
 # but inherits the autocti version.
+# The CTI stack is autoconf/autoarray/autofit/autocti (autocti's declared deps;
+# autogalaxy is NOT one — autolens sits on autogalaxy, autocti does not). Probing
+# autogalaxy here would make --check-version exit `not_installed` for a correctly
+# configured CTI user at session start.
 BASELINE_MODULES: tuple[str, ...] = (
     "autoconf",
     "autoarray",
     "autofit",
-    "autogalaxy",
     "autocti",
     "autocti.plot",
 )
@@ -70,7 +73,6 @@ VERSIONED_MODULES: tuple[str, ...] = (
     "autoconf",
     "autoarray",
     "autofit",
-    "autogalaxy",
     "autocti",
 )
 
@@ -388,7 +390,7 @@ def _cross_module_candidates(leaf: str) -> list[str]:
     if leaf in _cross_cache:
         return _cross_cache[leaf]
     hits: list[str] = []
-    for mod_name in ("autoconf", "autoarray", "autofit", "autogalaxy", "autocti"):
+    for mod_name in ("autoconf", "autoarray", "autofit", "autocti"):
         root = _module_cache.get(mod_name)
         if root is None:
             try:
@@ -594,7 +596,7 @@ def render_report(
 # ---------------------------------------------------------------------------
 def gather_versions() -> dict[str, str]:
     out: dict[str, str] = {}
-    for name in ("autoconf", "autoarray", "autofit", "autogalaxy", "autocti"):
+    for name in ("autoconf", "autoarray", "autofit", "autocti"):
         try:
             mod = importlib.import_module(name)
         except Exception as e:  # noqa: BLE001
