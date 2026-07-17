@@ -1,6 +1,6 @@
 # PyAutoCTI Assistant
 
-> The PyAutoCTI Assistant is an AI assistant for doing strong-lens science with PyAutoCTI — agent instructions, task skills, and a reference wiki in one cloned repo you drive by conversation. This file is the front door: it routes you by intent — start a chat session, see what the assistant can do, read the reference, or jump to runnable examples.
+> The PyAutoCTI Assistant is an AI assistant for Charge Transfer Inefficiency (CTI) calibration and correction with PyAutoCTI — agent instructions, task skills, and a reference wiki in one cloned repo you drive by conversation. This file is the front door: it routes you by intent — start a chat session, see what the assistant can do, read the reference, or jump to runnable examples.
 
 ## Using it in chat (start here)
 
@@ -14,7 +14,7 @@ First tell me whether you can actually read the repo. If you can't, say so
 plainly — don't answer from memory.
 ```
 
-Read order: [AGENTS.md](./AGENTS.md) → [skills/README.md](./skills/README.md) → the relevant skill → [wiki/](./wiki). The assistant can route to examples, explain lensing, review pasted scripts/errors/figures, and draft code; it cannot run code, inspect your files, or guarantee drafts against your installed PyAutoCTI version. For repeated edits, live execution, or multi-session project state, switch to a local coding agent (or Codex web with the repo connected).
+Read order: [AGENTS.md](./AGENTS.md) → [skills/README.md](./skills/README.md) → the relevant skill → [wiki/](./wiki). The assistant can route to examples, explain CTI, review pasted scripts/errors/figures, and draft code; it cannot run code, inspect your files, or guarantee drafts against your installed PyAutoCTI version. For repeated edits, live execution, or multi-session project state, switch to a local coding agent (or Codex web with the repo connected).
 
 ## Agent instructions (canonical)
 
@@ -26,10 +26,10 @@ Read order: [AGENTS.md](./AGENTS.md) → [skills/README.md](./skills/README.md) 
 
 ## Reference
 
-- [wiki/core/index.md](./wiki/core/index.md): curated PyAuto* reference — stack, lensing concepts, API catalogues, operations.
-- [wiki/literature/index.md](./wiki/literature/index.md): strong-lensing science wiki — concepts, named entities (surveys, lenses), bibliography.
+- [wiki/core/index.md](./wiki/core/index.md): curated CTI + PyAuto* reference — what CTI is, trap physics, FPR/EPER, the arctic algorithm, calibration strategy.
+- [wiki/literature/index.md](./wiki/literature/index.md): CTI science wiki — detector physics, correction algorithms, Euclid VIS / HST ACS, trap pumping, CTI as a weak-lensing systematic; verified bibliography.
 
 ## Runnable examples & tutorials (elsewhere)
 
 - [autocti_workspace navigator](https://github.com/PyAutoLabs/autocti_workspace/blob/main/llms.txt): paste-friendly task router for end-to-end example scripts and notebooks.
-- [HowToLens](https://github.com/PyAutoLabs/HowToLens): from-first-principles strong-lensing lecture series.
+- `scripts/demonstrations/` (in this repo): four runnable end-to-end demos — calibrate a 1D dataset and a charge-injection image (recovering the input traps), correct CTI, and load results through the aggregator.
