@@ -64,28 +64,19 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install the released stack
-        run: |
-          python -m pip install --upgrade pip
-          VER="${{ inputs.stack_version }}"
-          if [ -n "$VER" ]; then
-            echo "Installing autocti==$VER (pulls the pinned autoconf/autoarray/autofit/autogalaxy)."
-            pip install "autocti==$VER"
-          else
-            echo "Installing the latest released autocti."
-            pip install autocti
-          fi
-
-      # Citation paths are graded against the refs the docs pin (`main` checkouts),
-      # NOT the pip-installed release above — post-release file moves would otherwise
-      # false-fail the docs. The pip install stays the ground truth for the symbol /
-      # version / idiom checks (what users actually run); the clones land in sources/,
-      # the resolver's documented fallback. autocti_workspace is sparse-cloned to its
-      # cited surface (scripts/ + root catalogues) to skip the heavy dataset blobs.
-      - name: Clone cited source trees (citation ground truth)
+      # The cited source trees are cloned FIRST because they are also the install
+      # ground truth (below). Citations resolve against these `main` checkouts —
+      # the refs the docs pin — NOT the installed stack, so post-release file
+      # moves cannot false-fail the docs. autocti_workspace is sparse-cloned to
+      # its cited surface (scripts/ + root catalogues) to skip the dataset blobs.
+      #
+      # PyAutoGalaxy is deliberately NOT cloned: it is not part of the CTI stack
+      # (autocti depends on autoconf/autoarray/autofit only). See the autogalaxy
+      # note in autoassistant/audit_skill_apis.py.
+      - name: Clone cited source trees (citation + install ground truth)
         run: |
           mkdir -p sources
-          for repo in PyAutoConf PyAutoArray PyAutoFit PyAutoGalaxy PyAutoCTI; do
+          for repo in PyAutoConf PyAutoArray PyAutoFit PyAutoCTI; do
             git clone --quiet --depth 1 "https://github.com/PyAutoLabs/$repo" "sources/$repo"
           done
           git clone --quiet --depth 1 --filter=blob:none --sparse \
@@ -93,6 +84,39 @@ jobs:
           # Cone mode: directories only; root-level files (llms.txt, llms-full.txt,
           # workspace_index.json) are always included automatically.
           git -C sources/autocti_workspace sparse-checkout set scripts
+
+      # Install the stack the checks grade against. Two modes:
+      #   • stack_version given (release-time workflow_call) → install that PyPI
+      #     release, so a release moving the API is graded immediately.
+      #   • otherwise (native PR/dispatch) → install from the `main` source clones
+      #     above. Leg 3's contract is "doc-pin truth, NOT the release wheel"; the
+      #     CTI release train is not yet wired, so PyPI serves a pre-resurrection
+      #     wheel that would grade the modern docs vacuously.
+      #
+      # arcticpy (the C++ arctic clocking code) is a hard import of autocti but
+      # not a pip dependency in EITHER mode: its sdist is source-only (needs
+      # libgsl-dev + cython) and its own requirements downgrade numpy below 2.0,
+      # so it is installed no-build-isolation / no-deps first. Recipe mirrors
+      # autocti_workspace_test/.github/scripts/smoke_install.sh.
+      - name: Install the stack (source @ main, or a pinned release)
+        run: |
+          python -m pip install --upgrade pip
+          sudo apt-get update && sudo apt-get install -y libgsl-dev
+          pip install numpy cython
+          pip install arcticpy==2.6 --no-build-isolation --no-deps
+
+          VER="${{ inputs.stack_version }}"
+          if [ -n "$VER" ]; then
+            echo "Installing pinned release autocti==$VER (pulls autoconf/autoarray/autofit)."
+            pip install "autocti==$VER"
+          else
+            echo "Installing the CTI stack from the main source clones."
+            pip install ./sources/PyAutoConf ./sources/PyAutoFit ./sources/PyAutoArray ./sources/PyAutoCTI
+            pip install "./sources/PyAutoArray[optional]"
+            # Re-resolution above can pull a stale autoconf from PyPI; pin the
+            # local source last so recent autoconf APIs stay importable.
+            pip install --force-reinstall --no-deps ./sources/PyAutoConf
+          fi
 
       - name: Run wiki-currency checks
         id: checks
