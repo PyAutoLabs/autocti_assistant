@@ -1,14 +1,19 @@
 # wiki/project/
 
-A running journal for *this clone* of `autocti_assistant`. Two things live here:
+State and a running journal for *this clone* of `autocti_assistant`. Three things
+live here:
 
-- [`profile.md`](./profile.md) — **one** living file describing who's working on this
-  clone and what they're doing. Built up incrementally as the agent picks up cues from
-  conversation. Light-touch: the agent only writes when it learns something durable
-  (level, instrument, science goal). The template is [`_profile_template.md`](./_profile_template.md).
-- **Dated entries** — `YYYY-MM-DD-<slug>.md`. Every meaningful session — a modeling
-  decision, a dataset change, a pipeline tweak, a result interpretation — gets one
-  entry here.
+- [`state.md`](./state.md) — durable **project** facts (the resurrection state,
+  what is and isn't wired, instrument heritage). Read it for *what is the state
+  of PyAutoCTI?*
+- `profile.md` — **one** living file describing who's working on this clone (the
+  **user** profile). Created on demand from
+  [`_profile_template.md`](./_profile_template.md) — it does **not** exist until a
+  user volunteers something durable (level, instrument, science goal), so it is
+  named here without a link.
+- **Dated entries** — `YYYY-MM-DD-<slug>.md`. Every meaningful session — a
+  modeling decision, a dataset change, a pipeline tweak, a result interpretation —
+  gets one entry here.
 
 ## File naming
 
@@ -58,9 +63,9 @@ alongside the work it describes. The entry must cover:
    likelihood shape).
 3. **Implementation choice** — the script(s) produced and the key decisions.
 
-Cross-link every named concept and profile/model into `wiki/core/` and
-`wiki/literature/` using `[[wiki-link]]` slugs (e.g. `[[Sersic1968]]`,
-`[[NavarroFrenkWhite1996]]`, `[[mass-sheet-degeneracy]]`).
+Cross-link every named concept and paper into `wiki/core/` and
+`wiki/literature/` using `[[wiki-link]]` slugs (e.g. `[[Massey2010]]`,
+`[[trap-pumping]]`, `[[cti-shape-bias]]`).
 
 ## How to read this folder
 
