@@ -51,7 +51,7 @@ def test_install_preflight_distinguishes_absent_stack():
 
 
 def test_install_preflight_distinguishes_broken_import(tmp_path):
-    for package in ("autoconf", "autoarray", "autofit", "autogalaxy", "autocti"):
+    for package in ("autonerves", "autoarray", "autofit", "autogalaxy", "autocti"):
         package_path = tmp_path / package
         package_path.mkdir()
         body = (

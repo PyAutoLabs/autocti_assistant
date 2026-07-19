@@ -6,7 +6,7 @@ description: Install and verify the PyAutoCTI stack, including arcticpy — the 
 # Setting up the PyAutoCTI environment
 
 Before any simulate/fit/correct work runs, the interpreter needs a working CTI
-stack: `autoconf`, `autoarray`, `autofit`, `autocti`, and — the part that trips
+stack: `autonerves`, `autoarray`, `autofit`, `autocti`, and — the part that trips
 almost everyone — **arcticpy**, the C++ *arctic* clocking code that `Clocker1D`
 and `Clocker2D` wrap. `import autocti` fails without it, yet `pip install
 autocti` does **not** pull it. This skill is how you get past that cleanly.
@@ -90,15 +90,15 @@ installing)".
 Running against the `main` source checkouts instead of a PyPI release (what
 `activate.sh`'s developer block and the `wiki-currency` CI do): install the
 same arctic prefix (steps 1–3), then the local repos in dependency order, and
-pin autoconf last so a re-resolution can't replace it with a stale wheel:
+pin autonerves last so a re-resolution can't replace it with a stale wheel:
 
 ```bash
-pip install ./PyAutoConf ./PyAutoFit ./PyAutoArray ./PyAutoCTI
+pip install ./PyAutoNerves ./PyAutoFit ./PyAutoArray ./PyAutoCTI
 pip install "./PyAutoArray[optional]"
-pip install --force-reinstall --no-deps ./PyAutoConf
+pip install --force-reinstall --no-deps ./PyAutoNerves
 ```
 
-Note the CTI stack is **autoconf/autoarray/autofit/autocti** — it does *not*
+Note the CTI stack is **autonerves/autoarray/autofit/autocti** — it does *not*
 include autogalaxy (that is the lensing stack). Don't install or expect it.
 
 ## Verify

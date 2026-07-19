@@ -178,7 +178,7 @@ wiki page or dataset, in the reference's shape.
 - [ ] `wiki/core/operations/installation.md` — regenerate for this domain (reference: `wiki/core/operations/installation.md`)
 - [ ] `wiki/core/operations/sandbox.md` — regenerate for this domain (reference: `wiki/core/operations/sandbox.md`)
 - [ ] `wiki/core/stack/autoarray.md` — regenerate for this domain (reference: `wiki/core/stack/autoarray.md`)
-- [ ] `wiki/core/stack/autoconf.md` — regenerate for this domain (reference: `wiki/core/stack/autoconf.md`)
+- [ ] `wiki/core/stack/autonerves.md` — regenerate for this domain (reference: `wiki/core/stack/autonerves.md`)
 - [ ] `wiki/core/stack/autofit.md` — regenerate for this domain (reference: `wiki/core/stack/autofit.md`)
 - [ ] `wiki/core/stack/autogalaxy.md` — regenerate for this domain (reference: `wiki/core/stack/autogalaxy.md`)
 - [ ] `wiki/core/stack/autocti.md` — regenerate for this domain (reference: `wiki/core/stack/autolens.md`)
