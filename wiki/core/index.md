@@ -33,7 +33,7 @@ missions, and the software — see the [literature wiki](../literature/index.md)
 ## The stack
 
 PyAutoCTI is built on the shared PyAuto\* libraries. The dependency chain is
-**autoconf** (config) → **autoarray** (data structures) → **autofit** (model
+**autonerves** (config) → **autoarray** (data structures) → **autofit** (model
 fitting) → **autocti** (CTI). It does *not* depend on autogalaxy — that is the
 lensing stack.
 

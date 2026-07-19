@@ -1,28 +1,28 @@
 {
   "_comment": "API baseline for autocti_assistant - see autoassistant/audit_skill_apis.py and skills/ac_audit_skill_apis.md. Regenerate with --write-baseline.",
-  "generated": "2026-07-17",
+  "generated": "2026-07-19",
   "versions": {
-    "autoconf": "2026.7.9.1",
+    "autonerves": "2026.7.9.1",
     "autoarray": "2026.7.9.1",
     "autofit": "2026.7.9.1",
     "autocti": "2024.11.13.2"
   },
   "api_surface": {
-    "autoconf": {
+    "autonerves": {
       "hash": "7bd5c3b0830f6a87158e90563cd2b65d3484482df75c125376506c160ce1074e",
       "n_symbols": 32
     },
     "autoarray": {
-      "hash": "dfd1365821a3df8bd3c94b225378a2bef399ae0f18c11c6cd286e990fd416216",
-      "n_symbols": 107
+      "hash": "c5ff43af7c8505687f9bcb0b45aff32f05996f777b19321c8b14bc382e379ba5",
+      "n_symbols": 121
     },
     "autofit": {
-      "hash": "141cb9b8a13b9074957c5570086b761e033aa7993609a55a3bcd21cc77ea3d64",
-      "n_symbols": 128
+      "hash": "1d9f01f2162cfd268d225f4e1caad80ab0c8d874036a401eba93fcffdee8a896",
+      "n_symbols": 147
     },
     "autocti": {
-      "hash": "0ef66b5833a4bb1ae96653546dcac3a6bae4a2f16312012f485ba65f7480ef28",
-      "n_symbols": 87
+      "hash": "32d9b246f2472e3a479cb2e5728e91e877c2cf472a9888cfd6632fc9947f8b7d",
+      "n_symbols": 103
     },
     "autocti.plot": {
       "hash": "a589671b0d00039c63e4dcb6fb00465857bf090e5d86a2f142fe6ab3a188f0e4",
