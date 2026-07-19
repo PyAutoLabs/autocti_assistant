@@ -93,9 +93,9 @@ same arctic prefix (steps 1–3), then the local repos in dependency order, and
 pin autoconf last so a re-resolution can't replace it with a stale wheel:
 
 ```bash
-pip install ./PyAutoConf ./PyAutoFit ./PyAutoArray ./PyAutoCTI
+pip install ./PyAutoNerves ./PyAutoFit ./PyAutoArray ./PyAutoCTI
 pip install "./PyAutoArray[optional]"
-pip install --force-reinstall --no-deps ./PyAutoConf
+pip install --force-reinstall --no-deps ./PyAutoNerves
 ```
 
 Note the CTI stack is **autoconf/autoarray/autofit/autocti** — it does *not*

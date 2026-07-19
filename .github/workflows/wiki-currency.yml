@@ -76,7 +76,7 @@ jobs:
       - name: Clone cited source trees (citation + install ground truth)
         run: |
           mkdir -p sources
-          for repo in PyAutoConf PyAutoArray PyAutoFit PyAutoCTI; do
+          for repo in PyAutoNerves PyAutoArray PyAutoFit PyAutoCTI; do
             git clone --quiet --depth 1 "https://github.com/PyAutoLabs/$repo" "sources/$repo"
           done
           git clone --quiet --depth 1 --filter=blob:none --sparse \
@@ -111,11 +111,11 @@ jobs:
             pip install "autocti==$VER"
           else
             echo "Installing the CTI stack from the main source clones."
-            pip install ./sources/PyAutoConf ./sources/PyAutoFit ./sources/PyAutoArray ./sources/PyAutoCTI
+            pip install ./sources/PyAutoNerves ./sources/PyAutoFit ./sources/PyAutoArray ./sources/PyAutoCTI
             pip install "./sources/PyAutoArray[optional]"
             # Re-resolution above can pull a stale autoconf from PyPI; pin the
             # local source last so recent autoconf APIs stay importable.
-            pip install --force-reinstall --no-deps ./sources/PyAutoConf
+            pip install --force-reinstall --no-deps ./sources/PyAutoNerves
           fi
 
       - name: Run wiki-currency checks
