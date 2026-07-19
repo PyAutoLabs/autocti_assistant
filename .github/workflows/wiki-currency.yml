@@ -71,7 +71,7 @@ jobs:
       # its cited surface (scripts/ + root catalogues) to skip the dataset blobs.
       #
       # PyAutoGalaxy is deliberately NOT cloned: it is not part of the CTI stack
-      # (autocti depends on autoconf/autoarray/autofit only). See the autogalaxy
+      # (autocti depends on autonerves/autoarray/autofit only). See the autogalaxy
       # note in autoassistant/audit_skill_apis.py.
       - name: Clone cited source trees (citation + install ground truth)
         run: |
@@ -107,14 +107,14 @@ jobs:
 
           VER="${{ inputs.stack_version }}"
           if [ -n "$VER" ]; then
-            echo "Installing pinned release autocti==$VER (pulls autoconf/autoarray/autofit)."
+            echo "Installing pinned release autocti==$VER (pulls autonerves/autoarray/autofit)."
             pip install "autocti==$VER"
           else
             echo "Installing the CTI stack from the main source clones."
             pip install ./sources/PyAutoNerves ./sources/PyAutoFit ./sources/PyAutoArray ./sources/PyAutoCTI
             pip install "./sources/PyAutoArray[optional]"
-            # Re-resolution above can pull a stale autoconf from PyPI; pin the
-            # local source last so recent autoconf APIs stay importable.
+            # Re-resolution above can pull a stale autonerves from PyPI; pin the
+            # local source last so recent autonerves APIs stay importable.
             pip install --force-reinstall --no-deps ./sources/PyAutoNerves
           fi
 
