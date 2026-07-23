@@ -300,7 +300,6 @@ wiki page or dataset, in the reference's shape.
 - [ ] review `config/.gitignore` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/README.md` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/general.yaml` — copied with name substitutions only; adapt values to this domain
-- [ ] review `config/grids.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/logging.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/non_linear/GridSearch.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/non_linear/README.md` — copied with name substitutions only; adapt values to this domain
