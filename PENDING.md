@@ -319,7 +319,7 @@ wiki page or dataset, in the reference's shape.
 - [ ] review `config/priors/light/linear/dev_vaucouleurs.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/linear/eff.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/linear/exponential.yaml` — copied with name substitutions only; adapt values to this domain
-- [ ] review `config/priors/light/linear/exponentiac_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/linear/exponential_core.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/linear/gaussian.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/linear/moffat.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/linear/sersic.yaml` — copied with name substitutions only; adapt values to this domain
@@ -336,7 +336,7 @@ wiki page or dataset, in the reference's shape.
 - [ ] review `config/priors/light/standard/dev_vaucouleurs.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/standard/eff.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/standard/exponential.yaml` — copied with name substitutions only; adapt values to this domain
-- [ ] review `config/priors/light/standard/exponentiac_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/light/standard/exponential_core.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/standard/gaussian.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/standard/moffat.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/light/standard/sersic.yaml` — copied with name substitutions only; adapt values to this domain
@@ -344,7 +344,7 @@ wiki page or dataset, in the reference's shape.
 - [ ] review `config/priors/mass/README.md` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/dark/gnfw.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/dark/gnfw_mcr.yaml` — copied with name substitutions only; adapt values to this domain
-- [ ] review `config/priors/mass/dark/gnfw_viriac_mass_conc.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/dark/gnfw_virial_mass_conc.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/dark/nfw.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/dark/nfw_mcr.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/dark/nfw_mcr_scatter.yaml` — copied with name substitutions only; adapt values to this domain
@@ -352,7 +352,7 @@ wiki page or dataset, in the reference's shape.
 - [ ] review `config/priors/mass/dark/nfw_truncated_mcr.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/point/point.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/point/smbh.yaml` — copied with name substitutions only; adapt values to this domain
-- [ ] review `config/priors/mass/sheets/externac_shear.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/sheets/external_shear.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/sheets/mass_sheet.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/stellar/chameleon.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/stellar/dev_vaucouleurs.yaml` — copied with name substitutions only; adapt values to this domain
@@ -363,7 +363,7 @@ wiki page or dataset, in the reference's shape.
 - [ ] review `config/priors/mass/stellar/sersic_core.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/stellar/sersic_gradient.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/total/isothermal.yaml` — copied with name substitutions only; adapt values to this domain
-- [ ] review `config/priors/mass/total/isothermac_core.yaml` — copied with name substitutions only; adapt values to this domain
+- [ ] review `config/priors/mass/total/isothermal_core.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/total/power_law.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/total/power_law_broken.yaml` — copied with name substitutions only; adapt values to this domain
 - [ ] review `config/priors/mass/total/power_law_core.yaml` — copied with name substitutions only; adapt values to this domain
