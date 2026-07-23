@@ -510,7 +510,7 @@ def render_report(
     root: Path,
 ) -> str:
     today = dt.date.today().isoformat()
-    totac_symbols = sum(len(d) for d in occurrences_by_file.values())
+    total_symbols = sum(len(d) for d in occurrences_by_file.values())
     unique_symbols = len(resolutions)
     missing = [s for s, r in resolutions.items() if r.status != "ok"]
     files_with_misses = {
@@ -539,7 +539,7 @@ def render_report(
     lines.append("| metric | value |")
     lines.append("|---|---|")
     lines.append(f"| files scanned | {len(occurrences_by_file)} |")
-    lines.append(f"| symbol occurrences (file × symbol) | {totac_symbols} |")
+    lines.append(f"| symbol occurrences (file × symbol) | {total_symbols} |")
     lines.append(f"| unique symbols | {unique_symbols} |")
     lines.append(f"| ok | {unique_symbols - len(missing)} |")
     lines.append(f"| missing or import-failed | {len(missing)} |")
