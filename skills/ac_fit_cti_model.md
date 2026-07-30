@@ -109,6 +109,13 @@ For a single dataset, wire one `AnalysisDataset1D` into a one-element factor
 graph the same way — the factor-graph path is uniform, so scripts don't
 special-case the single-line case.
 
+Once the search is running, say that `output/<path_prefix>/<name>/<unique_id>/` is filling
+**on the fly** from the best CTI model so far — `model.results` and the `image/` fit
+subplot are worth opening immediately, per charge line. For a newcomer, or in teacher
+mode, tour the folder per `_style.md` "Output folder announcement" and point at
+`__Output Folder__` / `__On The Fly Outputs__` in
+[`autocti_workspace/scripts/dataset_1d/modeling/start_here.py`](https://github.com/PyAutoLabs/autocti_workspace/blob/main/scripts/dataset_1d/modeling/start_here.py).
+
 ## Check the recovery
 
 If the data was simulated, load the input `cti.json` truth and compare the
