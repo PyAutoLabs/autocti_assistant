@@ -346,6 +346,35 @@ The full convention — committed Python lives in `scripts/`; throwaway plots an
 dumps go to the gitignored `scripts/scratch/` — is in `AGENTS.md`
 "Conventions". Skills here are the application of that rule.
 
+## Output folder announcement
+
+A running fit is not a black box. `search.fit(...)` writes to
+`output/<path_prefix>/<name>/<unique_id>/` **on the fly**, using the highest-likelihood
+CTI model found so far, so the folder is worth opening the moment the search starts — not
+when it terminates hours later. Users new to the stack rarely know this and sit watching
+a silent terminal. Three rules:
+
+1. **Announce the folder at launch, not at the end.** Quote the absolute path once the
+   fit is running, and say `model.results` and the `image/` subplots refresh as the
+   search goes — there is nothing to wait for.
+2. **Point at the workspace's own layout prose; don't restate it.** `__Output Folder__`
+   and `__On The Fly Outputs__` in
+   [`autocti_workspace/scripts/dataset_1d/modeling/start_here.py`](https://github.com/PyAutoLabs/autocti_workspace/blob/main/scripts/dataset_1d/modeling/start_here.py)
+   walk the folder and the on-the-fly writes, and explain the unique identifier that makes
+   a re-run resume rather than restart (`scripts/imaging_ci/modeling/start_here.py` has
+   the same sections for charge-injection imaging). Link it once per fit; never copy the
+   layout into a skill, where it would rot.
+3. **Name what to open first.** `model.results` for the human-readable fit summary and
+   the on-the-fly `FitDataset1D` / `FitImagingCI` subplot under `image/` for how good the
+   fit currently is — then [`ac_load_results`](./ac_load_results.md) for the programmatic
+   read. Under a factor graph one fit per charge line is written, each in its own
+   subfolder, so name the line whose output you are quoting.
+
+Depth follows "Adaptive depth" above. For either **newcomer** audience, and whenever
+[`modes/teacher.md`](../modes/teacher.md) is active, walk all three rules — reading the
+output folder *is* part of the workflow being taught. For a returning user, rule 1 alone
+(one line quoting the path) is enough.
+
 ## External resource citation
 
 Every `ac_*` skill ends with a single `## Further reading` block above the agent
