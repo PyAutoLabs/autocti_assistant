@@ -31,5 +31,5 @@ Read order: [AGENTS.md](./AGENTS.md) → [skills/README.md](./skills/README.md) 
 
 ## Runnable examples & tutorials (elsewhere)
 
-- [autocti_workspace navigator](https://github.com/PyAutoLabs/autocti_workspace/blob/main/llms.txt): paste-friendly task router for end-to-end example scripts and notebooks.
+- [autocti_workspace](https://github.com/PyAutoLabs/autocti_workspace): end-to-end example scripts and notebooks (no llms.txt routing layer yet — browse `scripts/` directly).
 - `scripts/demonstrations/` (in this repo): four runnable end-to-end demos — calibrate a 1D dataset and a charge-injection image (recovering the input traps), correct CTI, and load results through the aggregator.
