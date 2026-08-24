@@ -19,9 +19,13 @@ ask one focused question — never default to the longest possible explanation.
    ```bash
    python autoassistant/audit_skill_apis.py --check-version
    ```
-   Exit 0 = documented API matches the stack. Exit 1 = genuine drift: recommend the pinned
-   version or an audit. Exit 2/3 = absent/broken stack: report the interpreter and route to
-   [`ac_setup_environment`](./skills/ac_setup_environment.md). See
+   Exit 0 = nothing the docs can depend on has gone missing. It may still print an
+   `additions only (not gated)` diff — new upstream exports are reported, not failed, since
+   a symbol appearing cannot break a doc. Exit 1 = a symbol was **removed** from the public
+   surface: it names which, so run `--scope all` to see whether any is actually cited before
+   concluding anything. Exit 2/3 = absent/broken stack: report the interpreter and route to
+   [`ac_setup_environment`](./skills/ac_setup_environment.md). Full detail, and when
+   regenerating the baseline is right rather than papering over, in
    [`ac_audit_skill_apis`](./skills/ac_audit_skill_apis.md). Skip by default in maintainer mode.
 
 ## Safety invariants — default non-negotiable
