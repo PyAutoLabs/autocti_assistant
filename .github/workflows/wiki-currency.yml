@@ -18,7 +18,7 @@ on:
   workflow_call:
     inputs:
       stack_version:
-        description: "PyAutoCTI version to install and check against (empty = latest released)."
+        description: "PyAutoCTI version to install and check against (empty = the CTI stack built from the libraries' `main` source clones, NOT a PyPI release)."
         required: false
         type: string
         default: ""
@@ -30,7 +30,7 @@ on:
   workflow_dispatch:
     inputs:
       stack_version:
-        description: "PyAutoCTI version to install and check against (empty = latest released)."
+        description: "PyAutoCTI version to install and check against (empty = the CTI stack built from the libraries' `main` source clones, NOT a PyPI release)."
         required: false
         type: string
         default: ""
@@ -84,6 +84,15 @@ jobs:
           # Cone mode: directories only; root-level files (llms.txt, llms-full.txt,
           # workspace_index.json) are always included automatically.
           git -C sources/autocti_workspace sparse-checkout set scripts
+
+          # Record exactly which commits were graded against. Without this the
+          # drift report names no ref at all, so a red run cannot be diagnosed
+          # after the fact — you cannot tell a genuine doc/API divergence from
+          # the baseline simply having aged against a moving `main`.
+          for d in sources/*/; do
+            printf -- '- %s: `%s`\n' "$(basename "$d")" "$(git -C "$d" rev-parse --short HEAD)"
+          done > source-refs.md
+          cat source-refs.md
 
       # Paired-PR support (same trade-off as the Brain-ref hatch, PyAutoBrain#186):
       # on PR events, any cited source repo with a branch matching this PR's head
@@ -146,8 +155,16 @@ jobs:
           {
             echo "# Wiki-currency drift report"
             echo
-            echo "- stack_version: \`${{ inputs.stack_version || 'latest released' }}\`"
+            # Say what was ACTUALLY installed. An empty stack_version does NOT
+            # mean "latest released" — the install step below builds the stack
+            # from the sources/ `main` clones. Reporting "latest released" here
+            # sent a diagnosis of a red run looking for a release that had moved
+            # the API, when the real clock is the libraries' main branches.
+            echo "- stack_version: \`${{ inputs.stack_version || 'source @ main (not a release)' }}\`"
             echo "- assistant_ref: \`${{ inputs.assistant_ref || github.ref }}\`"
+            echo
+            echo "Cited/installed source trees:"
+            cat source-refs.md
             echo
           } > "$REPORT"
 
