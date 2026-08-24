@@ -1,6 +1,6 @@
 ---
 name: ac_setup_environment
-description: Install and verify the PyAutoCTI stack, including arcticpy — the C++ arctic clocking code that `import autocti` requires but pip will not install for you. The #1 setup failure. Covers the libgsl-dev + numpy/cython + arcticpy recipe, the numpy-downgrade trap, a no-root header workaround, and the environment/version drift check.
+description: Install and verify the PyAutoCTI stack, including arcticpy — the C++ arctic clocking code that `import autocti` requires but pip will not install for you. The #1 setup failure. Covers the libgsl-dev + build-deps + arcticpy recipe, the numpy-downgrade trap, a no-root header workaround, and the environment/version drift check.
 ---
 
 # Setting up the PyAutoCTI environment
@@ -37,37 +37,63 @@ normally:
   autoarray/autofit stack that expects numpy ≥ 2.
 
 So arcticpy is installed *after* numpy is already in place, with dependency
-resolution and build isolation both turned off.
+resolution and build isolation both turned off. Turning those two off is what
+makes the recipe fiddly, because each one has to be paid back by hand:
+
+- `--no-build-isolation` — pip builds in the current environment and does **not**
+  read arcticpy's `build-system.requires`, so every **build** dependency must
+  already be installed. arcticpy declares none of them, and `setuptools` is the
+  one people miss: without it the build dies at `BackendUnavailable: Cannot
+  import 'setuptools.build_meta'`. Python 3.12+ venvs no longer ship setuptools,
+  so this bites on any fresh modern venv.
+- `--no-deps` — pip installs no **runtime** dependencies either. `arcticpy/__init__.py`
+  imports `read_noise`, which imports `scipy` and `matplotlib` at import time, so
+  without them a perfectly good build still fails at `import arcticpy` with
+  `ModuleNotFoundError`.
 
 ## The recipe
 
-The order matters. numpy and cython must exist before arctic builds, and
+The order matters: the build dependencies must exist before arctic builds, and
 arctic must be installed `--no-deps` so it cannot drag numpy back down.
 
 ```bash
 # 1. GSL headers + a C++ toolchain (system-wide; needs sudo).
 sudo apt-get update && sudo apt-get install -y libgsl-dev
 
-# 2. numpy + cython first, so arctic has what it needs to build against.
+# 2. build dependencies. setuptools and wheel are NOT optional here —
+#    --no-build-isolation will not supply them.
+pip install --upgrade pip setuptools wheel
 pip install numpy cython
 
-# 3. arctic itself — no build isolation (uses the numpy just installed),
+# 3. runtime dependencies --no-deps will suppress but arcticpy imports anyway.
+pip install scipy matplotlib
+
+# 4. arctic itself — no build isolation (uses the numpy just installed),
 #    no deps (so it cannot pull an old numpy).
 pip install arcticpy==2.6 --no-build-isolation --no-deps
 
-# 4. the PyAutoCTI stack.
+# 5. the PyAutoCTI stack.
 pip install autocti
 ```
 
 Then confirm:
 
 ```bash
-python -c "import arcticpy, autocti; print('arctic', arcticpy.__version__, '| autocti', autocti.__version__)"
+python -c "import arcticpy, autocti; from importlib.metadata import version; print('arctic', version('arcticpy'), '| autocti', autocti.__version__)"
 ```
 
-The CI-hardened form of exactly this recipe lives in
-`autocti_workspace_test:.github/scripts/smoke_install.sh` — cite it when a user
-wants the canonical, tested sequence.
+**`arcticpy` has no `__version__` attribute.** `print(arcticpy.__version__)`
+raises `AttributeError` on a completely healthy install — read the distribution
+metadata instead, as above. If a user reports that error, they do not have a
+broken arcticpy; they have the wrong verification command.
+
+The CI-hardened form of exactly this recipe is the canonical, tested sequence —
+cite it when a user wants one:
+
+    PyAutoHeart:.github/actions/install-arcticpy/action.yml
+
+Every CTI repo's CI consumes that action, so it is the recipe that is actually
+exercised on every run. It also carries the single `arcticpy==2.6` pin.
 
 ## No root? Extract the GSL headers locally
 

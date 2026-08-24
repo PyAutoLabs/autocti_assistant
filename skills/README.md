@@ -41,7 +41,7 @@ grown in use.
 - [`ac_setup_environment.md`](./ac_setup_environment.md) — install and verify the
   PyAutoCTI stack, **including arcticpy** (the C++ arctic clocking code `import
   autocti` needs but pip won't install). The #1 setup failure; covers the
-  libgsl-dev + numpy/cython + arcticpy recipe and the numpy-downgrade trap.
+  libgsl-dev + build-deps + arcticpy recipe and the numpy-downgrade trap.
 
 ### The CTI calibration pipeline
 
