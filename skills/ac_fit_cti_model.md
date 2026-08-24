@@ -127,11 +127,8 @@ fits via the aggregator.
 ## Test mode
 
 Under `PYAUTO_TEST_MODE=2` the non-linear search is bypassed (it returns quickly
-at the prior medians) so a script runs end-to-end for smoke testing. A known
-artifact: identical-prior *ordered* trap species tie at the prior median under
-the bypass and trip their own ordering assertion — that is a test-mode artifact,
-not a real-fit problem. `PYAUTOFIT_TEST_MODE` does **not** exist; the knob is
-`PYAUTO_TEST_MODE`.
+at the prior medians) so a script runs end-to-end for smoke testing.
+`PYAUTOFIT_TEST_MODE` does **not** exist; the knob is `PYAUTO_TEST_MODE`.
 
 ## Further reading
 
