@@ -7,7 +7,7 @@ wiki page or dataset, in the reference's shape.
 
 - [ ] `.claude/skills/ac_adaptive_pixelization.md` — regenerate for this domain (reference: `.claude/skills/al_adaptive_pixelization.md`)
 - [ ] `.claude/skills/ac_aggregator_bulk_analysis.md` — regenerate for this domain (reference: `.claude/skills/al_aggregator_bulk_analysis.md`)
-- [ ] `.claude/skills/ac_audit_skill_apis.md` — regenerate for this domain (reference: `.claude/skills/al_audit_skill_apis.md`)
+- [x] `.claude/skills/ac_audit_skill_apis.md` — written 2026-08-24 (autocti_assistant#25); a symlink into `skills/`, per the repo's convention
 - [ ] `.claude/skills/ac_build_imaging_model.md` — regenerate for this domain (reference: `.claude/skills/al_build_imaging_model.md`)
 - [ ] `.claude/skills/ac_build_interferometer_model.md` — regenerate for this domain (reference: `.claude/skills/al_build_interferometer_model.md`)
 - [ ] `.claude/skills/ac_chain_searches.md` — regenerate for this domain (reference: `.claude/skills/al_chain_searches.md`)
@@ -96,7 +96,7 @@ wiki page or dataset, in the reference's shape.
 - [ ] `scripts/prepare_cosmos_web_ring.py` — regenerate for this domain (reference: `scripts/prepare_cosmos_web_ring.py`)
 - [ ] `skills/ac_adaptive_pixelization.md` — regenerate for this domain (reference: `skills/al_adaptive_pixelization.md`)
 - [ ] `skills/ac_aggregator_bulk_analysis.md` — regenerate for this domain (reference: `skills/al_aggregator_bulk_analysis.md`)
-- [ ] `skills/ac_audit_skill_apis.md` — regenerate for this domain (reference: `skills/al_audit_skill_apis.md`)
+- [x] `skills/ac_audit_skill_apis.md` — written 2026-08-24 (autocti_assistant#25). Written from `audit_skill_apis.py` itself rather than adapted from the lensing sibling, so it describes this repo's actual checks.
 - [ ] `skills/ac_build_imaging_model.md` — regenerate for this domain (reference: `skills/al_build_imaging_model.md`)
 - [ ] `skills/ac_build_interferometer_model.md` — regenerate for this domain (reference: `skills/al_build_interferometer_model.md`)
 - [ ] `skills/ac_chain_searches.md` — regenerate for this domain (reference: `skills/al_chain_searches.md`)

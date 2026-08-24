@@ -42,6 +42,11 @@ grown in use.
   PyAutoCTI stack, **including arcticpy** (the C++ arctic clocking code `import
   autocti` needs but pip won't install). The #1 setup failure; covers the
   libgsl-dev + build-deps + arcticpy recipe and the numpy-downgrade trap.
+- [`ac_audit_skill_apis.md`](./ac_audit_skill_apis.md) — the mechanical currency
+  checks that keep these skills and the wiki honest against the installed stack:
+  the symbol audit, the public-surface gate, the idiom deny-list, provenance and
+  citation paths. Read it before regenerating the API baseline — it is the
+  difference between a stale baseline and a genuinely stale doc.
 
 ### The CTI calibration pipeline
 

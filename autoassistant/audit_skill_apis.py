@@ -38,7 +38,7 @@ import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from types import ModuleType
-from typing import Iterable, Optional
+from typing import Iterable, Mapping, Optional
 
 try:
     import yaml
@@ -753,8 +753,15 @@ def _public_names(mod: ModuleType) -> list[str]:
     return sorted(n for n in dir(mod) if not n.startswith("_"))
 
 
+def _api_hash_from_names(names: Iterable[str]) -> str:
+    """Hash a public-name list. Split out from :func:`_api_hash` so the baseline's
+    ``hash`` and ``symbols`` provably describe the same list — a test can verify
+    the shipped baseline is internally consistent without importing the stack."""
+    return hashlib.sha256("\n".join(names).encode("utf-8")).hexdigest()
+
+
 def _api_hash(mod: ModuleType) -> str:
-    return hashlib.sha256("\n".join(_public_names(mod)).encode("utf-8")).hexdigest()
+    return _api_hash_from_names(_public_names(mod))
 
 
 def compute_baseline() -> dict:
@@ -781,7 +788,19 @@ def compute_baseline() -> dict:
             name
         )  # already known importable (plot via autocti)
         names = _public_names(mod)
-        api_surface[name] = {"hash": _api_hash(mod), "n_symbols": len(names)}
+        # `symbols` is what makes a red diagnosable. Without it a drift report
+        # can only say "the surface changed", and reconstructing *what* changed
+        # means checking out the baseline's own commits, installing the
+        # libraries from them and diffing by hand — which is exactly what the
+        # 2026-08-24 investigation had to do. It is also what lets the gate
+        # distinguish an addition (harmless to a doc) from a removal (not).
+        #
+        # `_api_hash` hashes this same sorted list, so the two cannot disagree.
+        api_surface[name] = {
+            "hash": _api_hash(mod),
+            "n_symbols": len(names),
+            "symbols": names,
+        }
 
     return {
         "_comment": "API baseline for autocti_assistant - see autoassistant/audit_skill_apis.py "
@@ -800,21 +819,61 @@ def write_baseline(root: Path) -> Path:
     return path
 
 
+def _surface_diff(
+    baseline: Mapping, current: Mapping
+) -> tuple[dict[str, tuple[list[str], list[str]]], bool]:
+    """Per-module (added, removed) symbol lists, plus whether names were usable.
+
+    Returns ``({module: (added, removed)}, True)`` when every drifting module in
+    the baseline recorded its ``symbols`` list. A baseline written before symbol
+    recording carries only a hash, so no diff is possible; that case returns
+    ``({}, False)`` and the caller falls back to hash-only reporting rather than
+    pretending the change was additive.
+    """
+    diffs: dict[str, tuple[list[str], list[str]]] = {}
+    for name in BASELINE_MODULES:
+        old_entry = baseline["api_surface"].get(name, {})
+        new_entry = current["api_surface"][name]
+        if old_entry.get("hash") == new_entry["hash"]:
+            continue
+        old_symbols = old_entry.get("symbols")
+        if old_symbols is None:
+            return {}, False
+        old_set, new_set = set(old_symbols), set(new_entry["symbols"])
+        diffs[name] = (sorted(new_set - old_set), sorted(old_set - new_set))
+    return diffs, True
+
+
 def check_version(root: Path) -> int:
     """Compare the installed stack's public API surface against the committed baseline.
 
-    Returns 0 when the public-API-surface hashes match, 1 on any hash drift (or a
-    missing baseline). Prints a short human-readable summary. Intentionally cheap
-    — no Markdown scan — so it is safe to run at session start.
+    Returns 0 when nothing was **removed** from the surface, 1 on any removal (or
+    a missing baseline). Intentionally cheap — no Markdown scan — so it is safe
+    to run at session start.
+
+    Why removals and not "any change" (autocti_assistant#25). This check used to
+    fail on any hash difference, i.e. on the entire public surface of autoarray
+    and autofit, almost none of which this assistant documents. Because the
+    workflow installs those libraries from their `main` source clones, the clock
+    was every merge upstream that exported a new name: the red that prompted this
+    was 12 additions and 2 removals, and **not one of the 14 symbols was cited
+    anywhere** in wiki/, skills/ or modes/. A gate that goes red on a schedule
+    nobody controls, for reasons that never affect what it gates, gets ignored —
+    and this repo's PRs opened red for over a month.
+
+    A symbol *appearing* cannot break a doc; a symbol *disappearing* can. So
+    additions are reported and pass, removals fail. Note this does not narrow all
+    the way to "removals of *cited* symbols" — that question is exactly what
+    `--scope all` already answers, and two mechanisms answering one question is
+    how they drift apart.
 
     The per-module ``__version__`` equality this check used to *gate* on was
-    dropped (PyAutoMind build-chain #155 Phase 4 task 3). Since PyAutoConf#119 /
-    PyAutoBuild#121 a release no longer commits the ``__version__`` stamp back to
-    the library ``main``, so a source checkout reports a frozen stamp while the
-    baseline is wheel-derived — a structurally-permanent version mismatch,
-    independent of release cadence, that the API-surface hash already proves is
-    spurious (the public surface is byte-identical). Versions are still shown for
-    context; only the API-surface hash gates.
+    dropped earlier (PyAutoMind build-chain #155 Phase 4 task 3). Since
+    PyAutoConf#119 / PyAutoBuild#121 a release no longer commits the
+    ``__version__`` stamp back to the library ``main``, so a source checkout
+    reports a frozen stamp while the baseline is wheel-derived — a
+    structurally-permanent mismatch the surface comparison already proves
+    spurious. Versions are still shown for context.
     """
     path = root / BASELINE_REL_PATH
     if not path.exists():
@@ -828,8 +887,8 @@ def check_version(root: Path) -> int:
     current = compute_baseline()
 
     # Informational only — a version-stamp difference no longer gates (frozen
-    # source stamps vs a wheel-derived baseline false-positive; the API-surface
-    # hash is the real signal).
+    # source stamps vs a wheel-derived baseline false-positive; the API surface
+    # is the real signal).
     version_changes = [
         (m, baseline["versions"].get(m, "(absent)"), current["versions"][m])
         for m in VERSIONED_MODULES
@@ -842,31 +901,93 @@ def check_version(root: Path) -> int:
         != current["api_surface"][m]["hash"]
     ]
 
+    version_note = ""
+    if version_changes:
+        version_note = (
+            " (version stamp differs but is not gated: "
+            + ", ".join(f"{m} {old}->{new}" for m, old, new in version_changes)
+            + ")"
+        )
+
     if not hash_drift:
-        note = ""
-        if version_changes:
-            note = (
-                " (version stamp differs but public API surface is identical: "
-                + ", ".join(f"{m} {old}->{new}" for m, old, new in version_changes)
-                + ")"
-            )
         print(
             f"[drift] clean — installed public API surface matches baseline "
-            f"(autocti {current['versions']['autocti']}, generated {baseline.get('generated')}){note}."
+            f"(autocti {current['versions']['autocti']}, "
+            f"generated {baseline.get('generated')}){version_note}."
+        )
+        return 0
+
+    diffs, have_symbols = _surface_diff(baseline, current)
+
+    if not have_symbols:
+        # A pre-#25 baseline records only a hash, so additions and removals are
+        # indistinguishable. Fail — the old, noisy behaviour — rather than guess
+        # the change was additive and wave through a real removal.
+        print(
+            "[drift] API DRIFT vs baseline "
+            f"(baseline generated {baseline.get('generated')}):",
+            file=sys.stderr,
+        )
+        print(
+            f"  - public API surface changed: {', '.join(hash_drift)}",
+            file=sys.stderr,
+        )
+        absent = [m for m in hash_drift if m not in baseline["api_surface"]]
+        if absent:
+            print(
+                f"  - not in the baseline at all: {', '.join(absent)} "
+                "(a module was added to BASELINE_MODULES after it was written)",
+                file=sys.stderr,
+            )
+        print(
+            "  This baseline cannot support a symbol diff, so added vs removed "
+            "cannot be told apart and the whole change is treated as gating — "
+            "assuming it additive would wave a real removal through. Run "
+            "`--write-baseline` to upgrade it; future reports will name the "
+            "symbols.",
+            file=sys.stderr,
+        )
+        return 1
+
+    removed_modules = [m for m, (_, removed) in diffs.items() if removed]
+    stream = sys.stderr if removed_modules else sys.stdout
+
+    header = "REMOVALS" if removed_modules else "additions only (not gated)"
+    print(
+        f"[drift] public API surface moved — {header} "
+        f"(baseline generated {baseline.get('generated')}):",
+        file=stream,
+    )
+    for module in sorted(diffs):
+        added, removed = diffs[module]
+        counts = (
+            f"{baseline['api_surface'][module]['n_symbols']} -> "
+            f"{current['api_surface'][module]['n_symbols']}"
+        )
+        print(f"  {module}  {counts}", file=stream)
+        if removed:
+            print(f"    - removed: {', '.join(removed)}", file=stream)
+        if added:
+            print(f"    + added:   {', '.join(added)}", file=stream)
+    if version_note:
+        print(f" {version_note.strip()}", file=stream)
+
+    if not removed_modules:
+        # Nothing left the surface, so no documented symbol can have stopped
+        # resolving. `--scope all` remains the check that proves the cited
+        # symbols are fine.
+        print(
+            "  Nothing was removed, so no cited symbol can have stopped "
+            "resolving. Not gating. Run `--write-baseline` to re-pin when "
+            "convenient — the baseline is stale, not wrong.",
+            file=stream,
         )
         return 0
 
     print(
-        "[drift] API DRIFT vs baseline "
-        f"(baseline generated {baseline.get('generated')}):",
-        file=sys.stderr,
-    )
-    print(f"  - public API surface changed: {', '.join(hash_drift)}", file=sys.stderr)
-    for m, old, new in version_changes:
-        print(f"  - {m} version: {old} -> {new} (informational)", file=sys.stderr)
-    print(
-        "  The skills/wiki were validated against the baseline. Run `--scope all` to audit "
-        "drift and `--write-baseline` to re-pin once fixed.",
+        "  A removed symbol can break a doc that cites it. Run `--scope all` to "
+        "find out whether any of the above is actually cited, fix or re-word "
+        "what is, then `--write-baseline` to re-pin.",
         file=sys.stderr,
     )
     return 1
