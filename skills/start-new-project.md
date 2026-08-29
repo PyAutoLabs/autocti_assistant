@@ -154,7 +154,7 @@ journal entries are read on demand (grep for a dataset, profile or output-dir na
 up front.
 
 ## The assistant (skills + wiki)
-Resolve the assistant clone, in order: `$AUTOLENS_ASSISTANT` → sibling `../autocti_assistant`
+Resolve the assistant clone, in order: `$AUTOCTI_ASSISTANT` → sibling `../autocti_assistant`
 → else clone `https://github.com/PyAutoLabs/autocti_assistant` into `sources/autocti_assistant/`
 (gitignored). Read its `AGENTS.md` and follow its constitution (safety invariants, conventions,
 modes); use its `skills/` and `wiki/` as the how-to and reference.
@@ -173,7 +173,7 @@ harness (Codex, Gemini, chat), self-enforce it: run
 
 ## This project
 - Context / decisions / results: `wiki/project/` (dated journal + `profile.md`).
-- Literature: general lensing concepts → the assistant's shared `wiki/literature/`
+- Literature: general CTI concepts → the assistant's shared `wiki/literature/`
   (refer-back); papers specific to this analysis → `wiki/project/bibliography.md`.
   Promotion upstream is deliberate, via `ac_ingest_paper` from the assistant clone.
 - Toolchain provenance: `project.yaml` (`assistant_ref`); what a given run actually used is
@@ -216,7 +216,7 @@ traced and re-run. `wiki/project/results_summary.md` is the short version.
 
 ## Continue this work
 
-Fork or clone this repo and drive it with your own AI assistant: point `$AUTOLENS_ASSISTANT`
+Fork or clone this repo and drive it with your own AI assistant: point `$AUTOCTI_ASSISTANT`
 at a local `autocti_assistant` clone — or just start your agent here and let it clone the
 assistant on demand (see `AGENTS.md`). You inherit the same skills, reference wiki and safety
 rules this project was built with, plus the full decision journal in `wiki/project/` — start
@@ -256,7 +256,7 @@ default and fail-open**: if no assistant clone resolves, the hook silently allow
         "hooks": [
           {
             "type": "command",
-            "command": "sh -c 'P=\"${CLAUDE_PROJECT_DIR:-.}\"; for d in \"$AUTOLENS_ASSISTANT\" \"$P/../autocti_assistant\" \"$P/sources/autocti_assistant\"; do [ -n \"$d\" ] && [ -f \"$d/.claude/hooks/validate_pyauto_code.py\" ] && exec python3 \"$d/.claude/hooks/validate_pyauto_code.py\"; done; exit 0'"
+            "command": "sh -c 'P=\"${CLAUDE_PROJECT_DIR:-.}\"; for d in \"$AUTOCTI_ASSISTANT\" \"$P/../autocti_assistant\" \"$P/sources/autocti_assistant\"; do [ -n \"$d\" ] && [ -f \"$d/.claude/hooks/validate_pyauto_code.py\" ] && exec python3 \"$d/.claude/hooks/validate_pyauto_code.py\"; done; exit 0'"
           }
         ]
       }
@@ -293,7 +293,7 @@ rule stated once in its header):
 Papers that belong to this project's reference list live here, one `##` section per paper in
 the same shape as the assistant's `wiki/literature/sources/*.md` (canonical BibTeX key,
 reference, concepts, supported claims — public arXiv/DOI references only, never local PDF
-paths). General lensing concepts are NOT duplicated here: the assistant's shared
+paths). General CTI concepts are NOT duplicated here: the assistant's shared
 `wiki/literature/` (resolved via refer-back) stays the one source of truth. A paper that
 proves generally useful can be promoted upstream by running `ac_ingest_paper` from the
 assistant clone — promotion is deliberate, never the default.
@@ -390,7 +390,7 @@ prepared, exported, or handed over out-of-band.
   add branch protection / PRs / light CI for coauthors.
 - **A collaborator continues the work by forking or cloning the project** and starting their
   own assistant session inside it: the thin `AGENTS.md` resolves an `autocti_assistant` clone
-  via refer-back (`$AUTOLENS_ASSISTANT` → sibling → clone-on-demand), so they inherit the same
+  via refer-back (`$AUTOCTI_ASSISTANT` → sibling → clone-on-demand), so they inherit the same
   skills, reference wiki, and safety rules the project was built with. Their first session is
   the generated `AGENTS.md` session-start block — `state.md`, the newest journal entry,
   `profile.md` — plus the provenance-drift check result; then they continue the analysis, and
@@ -448,7 +448,7 @@ record the DOI in `release.zenodo` and `CITATION.cff`.
 
 A project is self-describing: its `AGENTS.md` and `project.yaml` record the assistant repo URL
 and creation commit. When the copilot is invoked inside a project, resolve the assistant in
-order — `$AUTOLENS_ASSISTANT` → `../autocti_assistant` → clone the recorded URL on demand into
+order — `$AUTOCTI_ASSISTANT` → `../autocti_assistant` → clone the recorded URL on demand into
 the gitignored `sources/autocti_assistant/` — then read `skills/` and `wiki/` from there. This
 mirrors the source-of-truth `sources/` clone-on-demand pattern in `AGENTS.md`; the project
 depends on no vendored copy of the assistant.

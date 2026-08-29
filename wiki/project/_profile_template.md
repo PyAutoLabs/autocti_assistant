@@ -21,14 +21,14 @@ from the assistant clone's.
 To start a real profile, copy this file to `wiki/project/profile.md` and fill in what you
 know. The agent will append to it as the conversation proceeds.
 
-## Lensing background
+## CTI background
 
-One or two sentences on the user's prior exposure to gravitational lensing. Examples:
+One or two sentences on the user's prior exposure to charge transfer inefficiency. Examples:
 
-- "First encounter with lensing — no prior coursework."
-- "PhD on weak lensing two years ago, new to strong."
-- "PI on a SLACS subhalo paper."
-- "Bartelmann/Schneider fluent; has read most of the literature wiki."
+- "First encounter with CTI — no prior coursework."
+- "Detector-calibration background; new to forward-modelling the trap species."
+- "PI on a Euclid VIS in-flight calibration paper."
+- "Fluent in the HST ACS CTI literature; has read most of the literature wiki."
 
 _unrecorded_
 
@@ -37,8 +37,8 @@ _unrecorded_
 How familiar the user is with the PyAuto\* stack. Examples:
 
 - "Never used."
-- "Ran a HowToLens tutorial last year."
-- "Used PyAutoCTI 2022.x on a group lensing project."
+- "Ran the autocti_workspace overview notebooks last year."
+- "Used PyAutoCTI 2022.x to calibrate one CCD; the API has moved since."
 - "Day-to-day user; just started a new fork."
 
 _unrecorded_
@@ -51,7 +51,7 @@ Leave unrecorded to let the assistant infer the mode from each opening request. 
 `AGENTS.md` "Modes". Examples:
 
 - "teacher — workshop attendee, wants the science explained."
-- "assistant — prefers autonomous multi-session runs (subhalo project)."
+- "assistant — prefers autonomous multi-session runs (trap-density calibration)."
 
 _unrecorded_
 
