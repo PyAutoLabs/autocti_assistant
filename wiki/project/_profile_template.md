@@ -4,24 +4,31 @@ type: profile
 last_touched: YYYY-MM-DD
 ---
 
-# Project profile
+# User profile
 
-Captures who's working on this fork and what they're doing — recorded incrementally
-over the course of conversations. Light-touch and freeform: not every field needs a
-value, and the agent updates it only when it learns something **durable** (a level,
-an instrument, a science goal that the user has volunteered, not just guessed at).
+Captures **who** is working here — background, how they want to be worked with, and what
+their compute access allows. Recorded incrementally over conversations. Light-touch and
+freeform: not every field needs a value, and the agent updates it only when it learns
+something **durable** the user has volunteered, not guessed at.
 
-To start a real profile, copy this file to `wiki/project/profile.md` and fill in
-what you know. The agent will append to it as the conversation proceeds.
+**This file is about the user, not the project.** The science goal, the data on hand and
+where the work got to belong to `state.md` (template: `_state_template.md`), which is
+rewritten each session. The split matters because these facts are *portable*: the person
+who starts a second project brings their background, HPC access and automation preference
+with them, and should not be asked for them twice — a new project seeds its `profile.md`
+from the assistant clone's.
 
-## Lensing background
+To start a real profile, copy this file to `wiki/project/profile.md` and fill in what you
+know. The agent will append to it as the conversation proceeds.
 
-One or two sentences on the user's prior exposure to gravitational lensing. Examples:
+## CTI background
 
-- "First encounter with lensing — no prior coursework."
-- "PhD on weak lensing two years ago, new to strong."
-- "PI on a SLACS subhalo paper."
-- "Bartelmann/Schneider fluent; has read most of the literature wiki."
+One or two sentences on the user's prior exposure to charge transfer inefficiency. Examples:
+
+- "First encounter with CTI — no prior coursework."
+- "Detector-calibration background; new to forward-modelling the trap species."
+- "PI on a Euclid VIS in-flight calibration paper."
+- "Fluent in the HST ACS CTI literature; has read most of the literature wiki."
 
 _unrecorded_
 
@@ -30,8 +37,8 @@ _unrecorded_
 How familiar the user is with the PyAuto\* stack. Examples:
 
 - "Never used."
-- "Ran a HowToLens tutorial last year."
-- "Used PyAutoCTI 2022.x on a group lensing project."
+- "Ran the autocti_workspace overview notebooks last year."
+- "Used PyAutoCTI 2022.x to calibrate one CCD; the API has moved since."
 - "Day-to-day user; just started a new fork."
 
 _unrecorded_
@@ -44,28 +51,7 @@ Leave unrecorded to let the assistant infer the mode from each opening request. 
 `AGENTS.md` "Modes". Examples:
 
 - "teacher — workshop attendee, wants the science explained."
-- "assistant — prefers autonomous multi-session runs (subhalo project)."
-
-_unrecorded_
-
-## Current science goal
-
-Free-text — whatever the user has volunteered. No prescribed taxonomy. Examples:
-
-- "Fit one HST imaging dataset of SLACS0737 with a pixelised source."
-- "Constrain H0 from quad-imaged quasar time delays."
-- "Search for subhalos in a Euclid lens sample."
-- "Build intuition by simulating and re-fitting a toy lens."
-
-_unrecorded_
-
-## Data on hand
-
-Instrument + scale + counts if known. Examples:
-
-- "1 HST imaging dataset (already in `dataset/slacs/slacs0737`)."
-- "ALMA visibilities awaiting reduction."
-- "No data yet — will simulate via `ac_simulate_dataset`."
+- "assistant — prefers autonomous multi-session runs (trap-density calibration)."
 
 _unrecorded_
 
@@ -96,13 +82,6 @@ Examples:
 - "cosma; MFA no; VPN no; bastion `cosma-login`; agent exec ok; user-confirms-each."
 
 _unrecorded_
-
-## Decisions log
-
-Links to the dated `wiki/project/YYYY-MM-DD-<slug>.md` entries that capture concrete
-work done. Newest first.
-
-- _no entries yet_
 
 ## How to update this file
 
