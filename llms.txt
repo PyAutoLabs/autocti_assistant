@@ -1,20 +1,24 @@
 # PyAutoCTI Assistant
 
-> The PyAutoCTI Assistant is an AI assistant for Charge Transfer Inefficiency (CTI) calibration and correction with PyAutoCTI — agent instructions, task skills, and a reference wiki in one cloned repo you drive by conversation. This file is the front door: it routes you by intent — start a chat session, see what the assistant can do, read the reference, or jump to runnable examples.
+> The front door of the PyAutoCTI Assistant — an AI assistant for Charge Transfer Inefficiency (CTI) calibration and correction with PyAutoCTI: agent instructions, task skills and a reference wiki in one repository that you drive in natural language from inside an AI coding agent. It routes by intent: set up, see what the assistant can do, read the reference, or jump to runnable examples.
 
-## Using it in chat (start here)
+## How to use it
 
-First make sure your browser chat (ChatGPT, Claude) has a **GitHub connector** enabled so it can read this repository — without one it can't, so use a local coding agent instead. Then open with:
+The assistant is supported **only inside an AI coding agent** that can read this repository and execute Python: **Claude Code** or **Codex** (recommended and tested), or **OpenCode** as an experimental alternative. Clone the repository and open the agent inside it — `AGENTS.md` (via `CLAUDE.md` for Claude Code) loads automatically:
 
-```text
-Use the autocti_assistant repository to answer my PyAutoCTI questions:
-https://github.com/PyAutoLabs/autocti_assistant
-
-First tell me whether you can actually read the repo. If you can't, say so
-plainly — don't answer from memory.
+```bash
+git clone https://github.com/PyAutoLabs/autocti_assistant.git
+cd autocti_assistant
+claude        # or: codex / opencode
 ```
 
-Read order: [AGENTS.md](./AGENTS.md) → [skills/README.md](./skills/README.md) → the relevant skill → [wiki/](./wiki). The assistant can route to examples, explain CTI, review pasted scripts/errors/figures, and draft code; it cannot run code, inspect your files, or guarantee drafts against your installed PyAutoCTI version. For repeated edits, live execution, or multi-session project state, switch to a local coding agent (or Codex web with the repo connected).
+Then paste the starting prompt from the [README](./README.md). Desktop and IDE versions of these agents are fine when they provide the same repository and execution access. Browser chats with a GitHub connector are **not supported**: they cannot run the arctic-backed stack or inspect data, which the assistant's safeguards depend on.
+
+Agentic does not mean autonomous: you can ask what CTI is, plan a calibration or learn in **Teacher Mode** without running anything — say so in your prompt.
+
+## If you are an agent reading this file
+
+Read order: [AGENTS.md](./AGENTS.md) → [skills/README.md](./skills/README.md) → the relevant skill → [wiki/](./wiki). Never write PyAutoCTI from memory: mirror the matching skill or a `scripts/demonstrations/` script and verify symbols against the installed library (`dir()`, or `python autoassistant/audit_skill_apis.py --code "<snippet>"` on a harness without the PreToolUse code gate). Inspect real data before composing any fit; if you cannot execute code in this session, ask the user to and report back — the gate is never waived.
 
 ## Agent instructions (canonical)
 
@@ -22,7 +26,7 @@ Read order: [AGENTS.md](./AGENTS.md) → [skills/README.md](./skills/README.md) 
 
 ## What it can do
 
-- [skills/README.md](./skills/README.md): one-line index of every task skill.
+- [skills/README.md](./skills/README.md): one-line index of every task skill. This cell was born as a lightweight seed; [PENDING.md](./PENDING.md) is the growth queue.
 
 ## Reference
 
