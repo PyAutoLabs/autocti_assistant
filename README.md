@@ -37,7 +37,9 @@ learning in Teacher Mode all happen inside the same agent.
 
 3. **Submit the starting prompt:**
 
-   ```
+   <sub><b>Example Natural Language Prompt for Claude Code, Codex or other AI coding agent</b></sub>
+
+   ```text
    I'm new to PyAutoCTI. Explain what charge transfer inefficiency is and how a calibration works, then run the
    1D calibration demonstration in scripts/demonstrations/demo_1_calibrate_1d.py, show me the fit, and check that
    it recovers the input trap density and release timescale.
@@ -77,7 +79,9 @@ When you begin a specific study, the assistant can create a dedicated **science 
 repository holding that study's datasets, configuration, analysis scripts, results and the record of your work with
 the assistant. The workflow is owned by the [`start-new-project`](skills/start-new-project.md) skill:
 
-```
+<sub><b>Example Natural Language Prompt for Claude Code, Codex or other AI coding agent</b></sub>
+
+```text
 Start a science project for my Euclid VIS CTI calibration.
 ```
 
