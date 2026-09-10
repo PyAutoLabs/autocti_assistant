@@ -46,7 +46,7 @@ deliberate refactor). Two are NEVER overridden: the real-data gate and never-rew
 - **Code gate.** A PreToolUse hook validates PyAuto* symbols against the installed library
   and blocks ones written from memory. If blocked, don't guess — grep `skills/` or introspect
   `dir()`, then re-run. The hook fires only on harnesses with hook support (Claude Code);
-  **on any other harness (Codex, Gemini, OpenCode, Copilot, chat) self-enforce it**: run
+  **on any other harness (Codex, OpenCode, Gemini CLI, an IDE agent) self-enforce it**: run
   `python autoassistant/audit_skill_apis.py --code "<snippet>"` (or `--file <script.py>`) on
   generated PyAuto* code before executing it. (Manual run + bypass:
   [`skills/ac_audit_skill_apis.md`](./skills/ac_audit_skill_apis.md).)
