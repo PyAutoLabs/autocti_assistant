@@ -17,14 +17,14 @@ and inspects the results. That is what lets it install PyAutoCTI and its arctic 
 the trails they produce. You do not have to run anything to use it: asking what CTI is, planning a calibration or
 learning in Teacher Mode all happen inside the same agent.
 
-1. **Choose Claude Code or Codex.** These are the two recommended agents and the ones the assistant is developed and
-   tested against. Their setup pages live in the sibling assistant and apply here with this repository's URL:
+1. **Choose Claude Code or Codex.** These are the two recommended agents. Codex discovery and safety adapters have
+   focused validation; full science fits depend on the local environment. Their setup pages live in the sibling assistant and apply here with this repository's URL:
    [Claude Code](https://github.com/PyAutoLabs/autolens_assistant/blob/main/docs/setup/claude_code.md) ·
    [Codex](https://github.com/PyAutoLabs/autolens_assistant/blob/main/docs/setup/codex_cli.md). For sustained
    scientific work expect to pay for one of them, but how depends on your situation: a personal subscription, access
    through your institution or team, or usage-based API billing. Check the provider's current plans rather than
-   assuming a subscription is the only route. Desktop and IDE versions of either agent are fine, provided they can read
-   this repository and execute code.
+   assuming a subscription is the only route. The setup below uses the CLI; the linked smoke record describes
+   its tested coverage.
 2. **Open the assistant workspace.** Clone this repository and start the agent inside it — the instructions load
    automatically, and the assistant sets up the PyAutoCTI stack (including arcticpy, which needs a compiler and GSL
    headers — see [`skills/ac_setup_environment.md`](skills/ac_setup_environment.md)) after your first prompt:
