@@ -12,55 +12,35 @@ index of what exists today.
 
 ## Getting Started
 
-The assistant runs inside an **AI coding agent** — a tool that reads this repository, executes Python on your computer
-and inspects the results. That is what lets it install PyAutoCTI and its arctic dependency, run calibrations and look at
-the trails they produce. You do not have to run anything to use it: asking what CTI is, planning a calibration or
+The assistant runs inside an **AI coding agent**: a tool that reads this repository, runs Python on your computer
+and inspects the results. That is what lets it install PyAutoCTI and its arctic dependency, run calibrations and look
+at the trails they produce. You do not have to run anything to use it: asking what CTI is, planning a calibration or
 learning in Teacher Mode all happen inside the same agent.
 
-1. **Choose Claude Code or Codex.** These are the two recommended agents. Codex discovery and safety adapters have
-   focused validation; full science fits depend on the local environment. Their setup pages live in the sibling assistant and apply here with this repository's URL:
-   [Claude Code](https://github.com/PyAutoLabs/autolens_assistant/blob/main/docs/setup/claude_code.md) ·
-   [Codex](https://github.com/PyAutoLabs/autolens_assistant/blob/main/docs/setup/codex_cli.md). For sustained
-   scientific work expect to pay for one of them, but how depends on your situation: a personal subscription, access
-   through your institution or team, or usage-based API billing. Check the provider's current plans rather than
-   assuming a subscription is the only route. The setup below uses the CLI; the linked smoke record describes
-   its tested coverage.
-2. **Open the assistant workspace.** Clone this repository and start the agent inside it — the instructions load
-   automatically, and the assistant sets up the PyAutoCTI stack (including arcticpy, which needs a compiler and GSL
-   headers — see [`skills/ac_setup_environment.md`](skills/ac_setup_environment.md)) after your first prompt:
+Claude Code and Codex are recommended. Free options and chat use are on the
+[PyAutoLabs AI options page](https://github.com/PyAutoLabs/PyAutoScientist/blob/main/AI_OPTIONS.md).
 
-   ```bash
-   git clone https://github.com/PyAutoLabs/autocti_assistant.git
-   cd autocti_assistant
-   claude        # or: codex
-   ```
+Clone this repository and start the agent inside it. The assistant sets up the PyAutoCTI stack after your first
+prompt (arcticpy needs a compiler and GSL headers, see [`skills/ac_setup_environment.md`](skills/ac_setup_environment.md)):
 
-3. **Submit the starting prompt:**
+```bash
+git clone https://github.com/PyAutoLabs/autocti_assistant.git
+cd autocti_assistant
+claude        # or: codex
+```
 
-   <sub><b>Example Natural Language Prompt for Claude Code, Codex or other AI coding agent</b></sub>
+Then submit the starting prompt:
 
-   ```text
-   I'm new to PyAutoCTI. Explain what charge transfer inefficiency is and how a calibration works, then run the
-   1D calibration demonstration in scripts/demonstrations/demo_1_calibrate_1d.py, show me the fit, and check that
-   it recovers the input trap density and release timescale.
-   ```
+<sub><b>Example Natural Language Prompt for Claude Code, Codex or other AI coding agent</b></sub>
+
+```text
+I'm new to PyAutoCTI. Explain what charge transfer inefficiency is and how a calibration works, then run the
+1D calibration demonstration in scripts/demonstrations/demo_1_calibrate_1d.py, show me the fit, and check that
+it recovers the input trap density and release timescale.
+```
 
 Start the prompt with `Teacher mode.` if you want the detector physics explained as you go, or ask it to plan a
 calibration and discuss the trap model before anything runs.
-
-## Experimental alternatives
-
-**OpenCode** is an open-source coding agent whose *client* is free. Model access is separate: you connect it to a
-provider, and the cost, capability and availability of the model are the provider's, not OpenCode's; free models are
-often limited-time offerings, and not every model can drive the assistant (it must handle multi-step tool use and be
-able to look at figures). **No free provider/model configuration has yet been validated against any PyAuto assistant**,
-so treat OpenCode as compatible rather than tested. Setup and caveats are on the sibling assistant's
-[OpenCode page](https://github.com/PyAutoLabs/autolens_assistant/blob/main/docs/setup/opencode_cli.md); use this
-repository's URL.
-
-Browser chats with a GitHub connector are **not supported**. Maintainer-facing notes on evaluating further agents are
-in the sibling assistant's
-[`docs/evaluation/agent_evaluation.md`](https://github.com/PyAutoLabs/autolens_assistant/blob/main/docs/evaluation/agent_evaluation.md).
 
 ## What ships today
 
