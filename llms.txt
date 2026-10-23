@@ -4,12 +4,12 @@
 
 ## How to use it
 
-The assistant is supported **only inside an AI coding agent** that can read this repository and execute Python: **Claude Code** or **Codex** (recommended and tested), or **OpenCode** as an experimental alternative. Clone the repository and open the agent inside it — `AGENTS.md` (via `CLAUDE.md` for Claude Code) loads automatically:
+The assistant is supported **only inside an AI coding agent** that can read this repository and execute Python: **Claude Code** or **Codex** (recommended and tested). Free options (GitHub Copilot CLI, OpenCode) are on the [PyAutoLabs AI options page](https://github.com/PyAutoLabs/PyAutoScientist/blob/main/AI_OPTIONS.md). Clone the repository and open the agent inside it; `AGENTS.md` loads automatically:
 
 ```bash
 git clone https://github.com/PyAutoLabs/autocti_assistant.git
 cd autocti_assistant
-claude        # or: codex / opencode
+claude        # or: codex
 ```
 
 Then paste the starting prompt from the [README](./README.md). Desktop and IDE versions of these agents are fine when they provide the same repository and execution access. Browser chats with a GitHub connector are **not supported**: they cannot run the arctic-backed stack or inspect data, which the assistant's safeguards depend on.
