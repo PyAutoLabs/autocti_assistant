@@ -69,6 +69,10 @@ grown in use.
   the symbol audit, the public-surface gate, the idiom deny-list, provenance and
   citation paths. Read it before regenerating the API baseline — it is the
   difference between a stale baseline and a genuinely stale doc.
+- [`ac_refresh_colab_contexts.md`](./ac_refresh_colab_contexts.md) — maintainer
+  upkeep for `colab/contexts.yaml`, the skill-to-notebook mapping behind the Colab
+  Gemini instructions: run the check and the PyAutoHands coverage report, fix
+  default-only notebooks, dead entries and near-cap entries, and open a PR.
 
 ### The CTI calibration pipeline
 

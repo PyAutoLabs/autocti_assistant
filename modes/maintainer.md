@@ -31,6 +31,7 @@ Use the existing skills, not new docs:
 - Authoring or evolving a skill → [`skills/_bootstrap_skill.md`](../skills/_bootstrap_skill.md).
 - Regenerating `wiki/core/` against pinned sources → `ac_update_wiki`.
 - API gate / version baseline → [`skills/ac_audit_skill_apis.md`](../skills/ac_audit_skill_apis.md).
+- Colab Gemini skill mapping (`colab/contexts.yaml`) → [`skills/ac_refresh_colab_contexts.md`](../skills/ac_refresh_colab_contexts.md).
 
 ## Release-time wiki-currency check (two triggers, one check)
 
@@ -95,8 +96,10 @@ scripts in `scripts/` (`*_cosmos_web_ring.py`, tied to a named lens; only
 `scripts/`'s own AGENTS/CLAUDE/README docs are generic).
 
 **Mixed** (structure generic, values domain-specific): `llms.txt` read-order,
-`config/`, `benchmarks/README.md` (protocol generic, benchmark table domain), the
-maintainer smoke tests below.
+`config/`, `benchmarks/README.md` (protocol generic, benchmark table domain),
+`colab/contexts.yaml` (preface and rules shape generic, skill mapping and CTI rules
+domain; a newborn remaps it to its own skills and workspace), the maintainer smoke
+tests below.
 
 **Per-clone data** (never copied to a newborn — each clone accumulates its own):
 `benchmarks/runs/` and the regenerated `benchmarks/RESULTS.md`. A newborn starts with
