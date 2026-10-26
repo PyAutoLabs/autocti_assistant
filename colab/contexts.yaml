@@ -1,0 +1,138 @@
+# Colab Gemini instructions — which assistant skills travel with which notebook.
+#
+# Colab's Gemini sidebar cannot read this repository, but it honours per-notebook
+# instructions stored in the notebook's metadata (`metadata.colab.aiContexts` +
+# `selectedAiContext`). The release does not generate autocti_workspace notebooks, so
+# PyAutoHands' standalone injector writes one such instruction into each of them:
+#
+#     autohands gemini_context apply <autocti_workspace>/notebooks \
+#         --project autocti --assistant-root <this checkout>
+#
+# Each instruction is assembled from this file:
+#
+#     preface  +  rules (with {notebook} and {repo} filled in)  +  each mapped skill's text
+#
+# The skills stay here (single source); notebooks carry a snapshot only.
+#
+# Matching
+#   Each notebook is named "<repo>/<path relative to the repo root>", e.g.
+#   "autocti_workspace/notebooks/dataset_1d/modeling/start_here.ipynb".
+#   `match` is an fnmatch glob over that name (`*` also crosses `/`).
+#   The FIRST entry in `contexts` whose glob matches wins, so entries are written
+#   most specific first. A notebook no entry matches gets `default`.
+#
+# Limits
+#   Every assembled context must stay within `cap` (default 20,000 characters; this
+#   file sets none). Stamping fails, naming the entry, rather than truncating;
+#   `python -m autoassistant.colab_contexts check` (CI: .github/workflows/colab-contexts.yml)
+#   checks every entry here first. Skills listed under `never_map` (maintainer and
+#   agent-infrastructure skills that only make sense with the repository checked out)
+#   may not be mapped.
+#
+# Upkeep: skills/ac_refresh_colab_contexts.md — when a skill is added or renamed, or
+# the workspace gains a folder, update the entries here, rerun the check and
+# `autohands gemini_context report`, and re-apply to the workspace notebooks.
+
+name: PyAutoCTI assistant
+
+# The project key autocti_workspace notebooks are stamped with. It sets the
+# instruction's id, so it matches the id PyAutoHands gives autocti_workspace.
+project: autocti
+
+preface: |
+  These instructions were prepared by the PyAutoCTI assistant
+  (https://github.com/PyAutoLabs/autocti_assistant). The reference material at the
+  end was written for a coding agent working inside a checkout of that repository.
+  Here in Google Colab there is no checkout: ignore any step about repository files,
+  hooks, `scripts/` or `wiki/` paths, saving scripts, or terminal tools, and use the
+  PyAutoCTI knowledge in that material to help with this notebook.
+
+rules: |
+  You are helping someone work through a PyAutoCTI notebook ({notebook} in {repo}).
+  Explain what it does and help them adapt it to their own questions.
+
+  Core rules:
+  1. Stay with this notebook's API. Only use PyAutoCTI calls that appear in the
+     notebook or in the reference material below. Never invent class names, functions
+     or arguments. If you are unsure whether something exists, say so and suggest
+     checking with `dir()` or the PyAutoCTI docs (https://pyautocti.readthedocs.io).
+  2. Real data → inspect before fitting. Before composing or running any model-fit on
+     real CCD data, ask the user to plot the dataset and its FPR / EPER regions, then
+     ask one question about artefacts that would bias the fit (cosmic rays, hot or bad
+     pixels, anything unexpected in the trails) and whether the FPR or the EPER should
+     be masked. Simulated data is exempt. This check is never waived.
+  3. Never claim a fit or a cell ran, or what it returned. Only the user's own outputs
+     tell you that; ask them to share what they see.
+  4. When the answer depends on something you do not know (their data, their goal, what
+     a cell printed), ask one focused question rather than guessing.
+  5. For multi-step projects (calibrating a new instrument or CCD, many datasets, a
+     paper's analysis), point them to the PyAutoCTI assistant
+     https://github.com/PyAutoLabs/autocti_assistant, which runs in Claude Code or
+     Codex with its full skills and safety checks.
+
+never_map:
+  - _bootstrap_skill
+  - _style
+  - ac_audit_skill_apis
+  - ac_refresh_colab_contexts
+  - ac_setup_environment
+  - contribute-upstream
+  - feedback
+  - start-new-project
+
+default:
+  skills: [ac_workspace_navigation, ac_fit_cti_model]
+
+contexts:
+
+  # --- overview tour ---------------------------------------------------------------
+  - match: autocti_workspace/notebooks/overview/overview_1_*
+    skills: [ac_simulate_dataset_1d, ac_plot]
+  - match: autocti_workspace/notebooks/overview/overview_2_*
+    skills: [ac_simulate_imaging_ci, ac_plot]
+  - match: autocti_workspace/notebooks/overview/overview_3_*
+    skills: [ac_simulate_dataset_1d, ac_plot]
+  - match: autocti_workspace/notebooks/overview/overview_4_*
+    skills: [ac_simulate_imaging_ci, ac_mask_and_extract]
+  - match: autocti_workspace/notebooks/overview/overview_5_*
+    skills: [ac_fit_cti_model, ac_plot]
+  - match: autocti_workspace/notebooks/overview/overview_6_*
+    skills: [ac_fit_cti_model, ac_load_results]
+
+  # --- plot: plotting guides per dataset (ccd/, fpa/, diagnostics/, plotters/) -------
+  - match: autocti_workspace/notebooks/plot/*/database*
+    skills: [ac_plot, ac_load_results]
+  - match: autocti_workspace/notebooks/plot/*
+    skills: [ac_plot]
+
+  # --- dataset_1d advanced -----------------------------------------------------------
+  - match: autocti_workspace/notebooks/dataset_1d/advanced/temporal/fit*
+    skills: [ac_fit_cti_model, ac_load_results]
+  - match: autocti_workspace/notebooks/dataset_1d/advanced/temporal/plot*
+    skills: [ac_load_results, ac_plot]
+  - match: autocti_workspace/notebooks/dataset_1d/advanced/temporal/*
+    skills: [ac_load_results]
+  - match: autocti_workspace/notebooks/*/advanced/database/*
+    skills: [ac_load_results]
+
+  # --- imaging_ci advanced -----------------------------------------------------------
+  - match: autocti_workspace/notebooks/imaging_ci/advanced/chaining/*
+    skills: [ac_fit_cti_model, ac_workspace_navigation]
+
+  # --- per-geometry pipeline stages --------------------------------------------------
+  - match: autocti_workspace/notebooks/dataset_1d/simulators/*
+    skills: [ac_simulate_dataset_1d]
+  - match: autocti_workspace/notebooks/imaging_ci/simulators/*
+    skills: [ac_simulate_imaging_ci]
+  - match: autocti_workspace/notebooks/imaging_ci/data_preparation/*
+    skills: [ac_mask_and_extract, ac_simulate_imaging_ci]
+  - match: autocti_workspace/notebooks/*/modeling/features/visualize_full*
+    skills: [ac_fit_cti_model, ac_plot]
+  - match: autocti_workspace/notebooks/*/modeling/*
+    skills: [ac_fit_cti_model, ac_mask_and_extract]
+  - match: autocti_workspace/notebooks/*/correction/*
+    skills: [ac_correct_cti]
+  - match: autocti_workspace/notebooks/*/results/*
+    skills: [ac_load_results, ac_plot]
+  - match: autocti_workspace/notebooks/*/extract.ipynb
+    skills: [ac_mask_and_extract]
