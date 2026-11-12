@@ -1,9 +1,10 @@
 # AGENTS.md — Agent instructions for autocti_assistant
 
 You are working inside **autocti_assistant**, the PyAutoCTI AI Assistant: an agent workspace
-combining instructions, skills, wiki content, and science-project machinery for real lens
-modelling. **This file is the canonical, agent-agnostic source of truth.** Claude Code, Codex
-and other agents read it directly; never maintain a parallel copy.
+combining instructions, skills, wiki content, and science-project machinery for CCD
+charge-transfer inefficiency (CTI) calibration and correction. **This file is the canonical,
+agent-agnostic source of truth.** Claude Code, Codex and other agents read it directly;
+never maintain a parallel copy.
 
 **Interaction principle.** When a decision genuinely depends on something you don't know,
 ask one focused question — never default to the longest possible explanation.
@@ -35,14 +36,16 @@ ask one focused question — never default to the longest possible explanation.
 
 ## Safety invariants — default non-negotiable
 
-Apply in every session. Overridable only by the named maintainer workflow that owns the
-rule (`ac_update_wiki` for `wiki/core/`; `PYAUTO_SKIP_API_GATE=1` for the code gate during a
-deliberate refactor). Two are NEVER overridden: the real-data gate and never-rewrite-history.
+Apply in every session. The wiki and code gate rules define their maintainer exceptions
+below. The real-data inspection and history rules apply without exception.
 
-- **Real data → inspect before fitting.** Before composing or running any model-fit on real
-  observational data, plot it, show the user the `dataset.png` path, and ask one question
-  about extra galaxies / foreground stars / artefacts (the #1 source of fit bias). Procedure,
-  bundled-dataset masks, exemptions: [`skills/ac_prepare_imaging_data.md`](./skills/ac_prepare_imaging_data.md). Simulated data is exempt.
+- **Real data → inspect before fitting.** Before composing or running any model fit on real
+  detector data, plot the dataset and show the user the absolute path to `dataset.png`.
+  Ask one focused question about artifacts or regions that should be excluded, such as
+  cosmic rays, bad pixels or columns, or contaminated charge-injection regions.
+  Use [`ac_plot`](./skills/ac_plot.md) for the inspection plot and
+  [`ac_mask_and_extract`](./skills/ac_mask_and_extract.md) for FPR/EPER masking and
+  extraction. Simulated data is exempt.
 - **Code gate.** A PreToolUse hook validates PyAuto* symbols against the installed library
   and blocks ones written from memory. If blocked, don't guess — grep `skills/` or introspect
   `dir()`, then re-run. Claude Code and Codex both register this hook from their
@@ -56,7 +59,9 @@ deliberate refactor). Two are NEVER overridden: the real-data gate and never-rew
   [`skills/ac_audit_skill_apis.md`](./skills/ac_audit_skill_apis.md).)
 - **Never write into `output/`** (PyAutoFit runtime) **or `sources/`** (cloned repos);
   agent-authored Python → `scripts/` or `scripts/scratch/`.
-- **`wiki/core/` is read-only** (only `ac_update_wiki` rewrites it); append to `wiki/project/`.
+- **`wiki/core/` is read-only in ordinary sessions.** Change it only during a deliberate
+  reference refresh requested by a maintainer. Ground refreshed guidance in installed
+  source. Append project notes to `wiki/project/`.
 - **Source-edit boundary.** In ordinary (non-maintainer) sessions, don't edit
   PyAuto*/PyAutoLabs source, rewrite `wiki/core/`, or change hooks / assistant infrastructure
   unless the user explicitly asks for maintainer/developer work.
@@ -75,28 +80,20 @@ deliberate refactor). Two are NEVER overridden: the real-data gate and never-rew
 Map every request onto one or more layers:
 
 1. **Instructions** (this file, `README.md`) — meta.
-2. **Skills** (`skills/*.md`, exposed through generated Claude and Codex adapters) — *procedural*: how to do a
-   task. Lensing skills are `ac_<task>.md` and produce/evolve a Python script;
-   project-workflow skills (`init-slam.md`, `start-new-project.md`) drive repo-level
-   operations; **euclid mode** skills are `euclid_<task>.md` — they pair the
-   collaboration's `euclid_strong_lens_modeling_pipeline` repo to the assistant, and any
-   request about modeling *Euclid* data routes through them (entry:
-   `skills/euclid_setup_pipeline.md`). Skills starting with `_` (`_style.md`,
-   `_bootstrap_skill.md`) are meta-skills — don't surface them when answering science
-   questions.
-3. **Wiki** (`wiki/**/*.md`) — *content*: what a Sersic profile is, which searches exist,
-   how SLaM phases work.
+2. **Skills** (`skills/*.md`, exposed through generated Claude and Codex adapters) —
+   *procedural*. CTI skills use `ac_<task>.md` and cover simulation, calibration,
+   correction, and result inspection. [`start-new-project`](./skills/start-new-project.md)
+   handles project setup. Files starting with `_` are authoring guidance.
+3. **Wiki** (`wiki/**/*.md`) — *content* on detector CTI, trap physics, and calibration.
 
 > **Rule of thumb.** *How do I do X?* → a skill. *What / which / why X?* → the wiki. *Build
 > something end-to-end?* → compose skills, citing wiki pages as you go.
 
-The wiki has four sub-wikis: **`wiki/core/`** (curated PyAuto\* reference, read-only —
-refreshed by `ac_update_wiki`), **`wiki/literature/`** (strong-lensing science reference,
-own schema in [`wiki/literature/AGENTS.md`](./wiki/literature/AGENTS.md), `[[wiki-link]]`
-cross-refs), **`wiki/euclid/`** (Euclid mission + Euclid strong-lensing literature,
-same schema as `literature/`, paired with the `euclid_*` skills), **`wiki/project/`**
-(this clone's `state.md` head pointer, running journal and `profile.md`). "The wiki" means `wiki/core/` unless
-`literature/`, `euclid/` or `project/` is named.
+The wiki has three sections. [`wiki/core/`](./wiki/core/index.md) is the read-only CTI
+reference. [`wiki/literature/`](./wiki/literature/index.md) covers detector physics,
+correction algorithms, and instrument calibration, including Euclid VIS. Its
+[schema](./wiki/literature/AGENTS.md) defines `[[wiki-link]]` cross-references.
+`wiki/project/` holds this clone's state, journal, and profile.
 
 ---
 
@@ -203,8 +200,8 @@ When **not** in maintainer mode, commit at natural checkpoints (a script + its
   `scripts/scratch/` (gitignored); `search.fit(...)` output → `./output/`.
 - **Plot path announcement.** The plot API is functional: pass
   `output_path="scripts/scratch/<context>/"`, `output_filename=...`, `output_format="png"`
-  straight to the `aplt.*` plotting call (e.g. `aplt.subplot_imaging_dataset`,
-  `aplt.subplot_fit_imaging`) — there is no separate `aplt.Output`/`MatPlot2D` object.
+  straight to the `aplt.*` plotting call (e.g. `aplt.subplot_imaging_ci`,
+  `aplt.subplot_fit_ci`) — there is no separate `aplt.Output`/`MatPlot2D` object.
   Then `print(...)` the absolute path, and after running **quote that absolute path** and
   offer to open it (platform opener: `open` on macOS, `xdg-open` on Linux,
   `explorer.exe`/`wslview` from WSL) — don't just say "plot saved". One offer per plot.
@@ -217,15 +214,10 @@ Load operational references on demand, not every session:
 
 - **Science projects.** `autocti_assistant` is the copilot; a science project is a separate
   repo created and managed through [`start-new-project`](./skills/start-new-project.md).
-- **Dataset layout + `info.json`** → [`wiki/core/operations/dataset.md`](./wiki/core/operations/dataset.md).
-- **HPC science** (cores, JAX/GPU, SLURM concepts) → [`wiki/core/operations/hpc.md`](./wiki/core/operations/hpc.md);
-  **HPC infrastructure shipped here** (`hpc/template.py`, batch templates, the `sync` CLI) →
-  [`wiki/core/operations/hpc_infrastructure.md`](./wiki/core/operations/hpc_infrastructure.md).
-- **Installation** → [`wiki/core/operations/installation.md`](./wiki/core/operations/installation.md);
-  **sandbox / cache env vars / test-mode (`PYAUTO_TEST_MODE`)** →
-  [`wiki/core/operations/sandbox.md`](./wiki/core/operations/sandbox.md).
-- **External resources** (HowToLens, RTD, `autocti_workspace`) + audience routing →
-  [`wiki/core/external/`](./wiki/core/external/index.md), [`skills/_style.md`](./skills/_style.md) "Adaptive depth".
+- **Dataset geometry and examples** → [`ac_workspace_navigation`](./skills/ac_workspace_navigation.md).
+- **Installation and writable caches** → [`ac_setup_environment`](./skills/ac_setup_environment.md).
+- **Fit setup and test mode** → [`ac_fit_cti_model`](./skills/ac_fit_cti_model.md).
+- **Choosing a reference for the reader** → [`skills/_style.md`](./skills/_style.md) under "Adaptive depth".
 
 <!-- repos_sync:history:begin -->
 ## Never rewrite history

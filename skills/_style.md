@@ -173,70 +173,24 @@ publication-quality docstring detail required by "Generated script style" above.
 
 Users arrive with different backgrounds. The same skill needs to serve all of them:
 
-- **The lensing newcomer.** Knows Python, maybe some astronomy, but hasn't worked with
-  strong lensing before. Doesn't yet know what a `Tracer`, a deflection angle, or a
-  caustic is. Frame the physics each time a new concept appears; lean heavily on the
-  wiki.
-- **The PyAuto\* newcomer.** Knows the science fluently — Bartelmann, Treu, the lens
-  equation, magnification — but new to the API. Map straight from science question to
-  object; skip the physics lecture.
-- **The returning user.** Has used PyAutoCTI before. Just wants to load a fit and
-  inspect the residuals. Quick API recall, no lecture.
+- **New to CTI.** Start with the [CTI concept page](../wiki/core/concepts/charge_transfer_inefficiency.md)
+  or the narrated overview in [`ac_workspace_navigation`](./ac_workspace_navigation.md).
+- **New to PyAutoCTI.** Use [`ac_workspace_navigation`](./ac_workspace_navigation.md) to
+  find the `start_here.py` for the relevant dataset geometry and task.
+- **Returning user.** Lead with the workspace example closest to the user's task.
 
-Pick depth from cues in the user's question. *"I'm new to lensing"* → newcomer. *"How
-do I get the caustics?"* → already knows lensing. *"Load `output/.../abc/`"* → returning
-user. If ambiguous, ask one disambiguating question; never default to the longest
-explanation.
-
-Read `wiki/project/profile.md` if it exists — that's the persistent record of the user's
-level and goal, built up over sessions. If it disagrees with what the user just said,
-trust the user and update the profile.
-
-### Resource routing by audience
-
-The three external resources cover different audiences. Match the user's level to
-the source, and pull the URL from
-[`wiki/core/external/skill_citation_map.md`](../wiki/core/external/skill_citation_map.md):
-
-| Audience | Lead resource | Secondary |
-|----------|---------------|-----------|
-| Lensing newcomer | **HowToLens** notebook — *surfaced before the code block, not after* | RTD `overview_1_start_here` |
-| PyAutoCTI newcomer (lensing-fluent) | **RTD** `overview_2_new_user_guide` + `overview_3_features` | Workspace example script |
-| Returning PyAutoCTI user | **Workspace** script for the science case | RTD API reference |
-
-Never dump all three on the user unprejudiced — pick one to lead, optionally cite a
-second.
+Pick depth from the user's question and `wiki/project/profile.md` when it exists.
+If the user's current cues differ from the profile, trust the user's latest input
+and update the profile.
 
 ### Newcomer mode
 
-When the user signals they're new to lensing — *"I'm new to lensing"*, *"I've never
-done this before"*, *"can you explain what a caustic is?"* — the agent shifts into a
-more pedagogical shape. The conversation arc still applies; what changes is the
-depth, ordering, and pacing.
-
-1. **Lead with the HowToLens notebook.** Before any code block, surface the tutorial
-   notebook URL from
-   [`wiki/core/external/skill_citation_map.md`](../wiki/core/external/skill_citation_map.md).
-   The notebook is the primary path; the skill-produced script is the follow-up
-   artefact, not the lead.
-2. **One concept at a time.** Don't stack three concepts in one branch — pick the
-   one most central to the user's question, frame it, then offer to go deeper.
-   *"Let's get the deflection angle clear first; once that lands we can move on to
-   the lens equation"* beats firing all three simultaneously.
-3. **Physics framing → statistical framing → code.** Property 1 already requires
-   both framings; for newcomers each framing gets at least one short paragraph and
-   at least one `wiki/core/concepts/` link before any code.
-4. **Check-in beat after each concept.** End with an explicit invitation: *"does
-   that make sense, or want me to unpack X further?"*. Don't barrel into the next
-   branch.
-5. **Encourage running HowToLens themselves.** A newcomer who runs the linked
-   notebook alongside the script learns far faster than one who only reads
-   citations. Mention this once per session: *"the notebook is short — if you run
-   it as you read along, it'll click faster."*
-
-Newcomer mode is a default for the lensing-newcomer audience, not a separate state.
-As soon as the user shows they've absorbed a concept, drop the check-in beats and
-move on.
+1. Link the relevant CTI overview or concept before showing code.
+2. Explain one detector effect at a time. For example, explain how traps cause
+   trailing charge before discussing how the trail constrains a trap species.
+3. Connect the physics to the inference, then show the code.
+4. Invite a follow-up after a concept and point to a runnable workspace example
+   the user can try.
 
 ## The conversation arc — Orient → Ask → Branch → Combine
 
@@ -264,7 +218,7 @@ calibrate depth. Skip this step only when the user has already told you.
 
 **Combine.** End the skill (or the chosen branch) with a short note on what else the
 user could do, especially with other skills. *"Once you have the fit running, feed the
-output into `ac_load_results` and `ac_plot_fit_residuals`."*
+output into `ac_load_results` and `ac_plot`."*
 
 A slim agent-facing procedural checklist at the very bottom of the file is fine — but
 the user-facing content above should read like a conversation arc, not a recipe.
@@ -277,8 +231,7 @@ the user-facing content above should read like a conversation arc, not a recipe.
 - Invite questions explicitly (*"ask if you want me to explain how this works"*).
 - Tie at least one concrete example to the user's data when their data type is known.
 - Point at the wiki by relative path every time you teach a concept.
-- For newcomers, surface the relevant HowToLens notebook before the code block, not
-  after. See "Newcomer mode" in Adaptive depth above.
+- For newcomers, surface the relevant CTI overview before the code block. See "Newcomer mode" in Adaptive depth above.
 - When a script produces plot files, quote the absolute path and offer to open it
   with the platform's opener. See "Plot output and path announcement" below.
 
@@ -322,11 +275,11 @@ back up the skills.
 Skills that produce visualisations save them through the function-style
 `autocti.plot` API — every entry point takes `output_path` / `output_filename`
 / `output_format` kwargs directly (see
-[`wiki/core/api/plotting.md`](../wiki/core/api/plotting.md)). Three rules:
+[`ac_plot`](./ac_plot.md)). Three rules:
 
 1. **Pass `output_path` / `output_filename` / `output_format` directly to
    each plot function.** Every `autocti.plot` `plot_*` and `subplot_*` helper accepts
-   these kwargs, e.g. `aplt.subplot_imaging_dataset(dataset=…,
+   these kwargs, e.g. `aplt.subplot_imaging_ci(dataset=…,
    output_path="scripts/scratch/<context>/", output_filename=…,
    output_format="png")`. Never rely on interactive display — the user is
    often running the script from a terminal where `plt.show()` flashes and
@@ -370,38 +323,22 @@ a silent terminal. Three rules:
    read. Under a factor graph one fit per charge line is written, each in its own
    subfolder, so name the line whose output you are quoting.
 
-Depth follows "Adaptive depth" above. For either **newcomer** audience, and whenever
+Depth follows "Adaptive depth" above. For users new to CTI or PyAutoCTI, and whenever
 [`modes/teacher.md`](../modes/teacher.md) is active, walk all three rules — reading the
 output folder *is* part of the workflow being taught. For a returning user, rule 1 alone
 (one line quoting the path) is enough.
 
 ## External resource citation
 
-Every `ac_*` skill ends with a single `## Further reading` block above the agent
-checklist (if present). The block is generated from one row of
-[`wiki/core/external/skill_citation_map.md`](../wiki/core/external/skill_citation_map.md)
-and follows this shape:
+End each `ac_*` skill with a single `## Further reading` block above the agent
+checklist, if present. Cite up to three references that directly support the
+workflow. Choose from a CTI concept page, a canonical source reference, or a
+validated workspace example. Use [`ac_workspace_navigation`](./ac_workspace_navigation.md)
+to find the relevant example, then cite the specific script.
 
-```markdown
-## Further reading
-
-- **Student / new to lensing** — [HowToLens: <tutorial title>](<expanded URL>): one
-  line on what the tutorial teaches.
-- **General reference** — [RTD: <page title>](<expanded URL>): canonical PyAutoCTI
-  documentation page.
-- **Experienced PyAutoCTI user** — [workspace/lens: <script name>](<expanded URL>):
-  production-style example to fork from.
-```
-
-Rules:
-
-- Three bullets max, one per audience. Omit any whose row cell is `_`.
-- The agent **picks one of the three to surface in the conversation** — the audience
-  match comes from `wiki/project/profile.md` (or, lacking that, from the user's
-  immediate cues). The other two stay in the block as references the user can fall
-  back on.
-- For non-`ac_*` skills (project workflow, meta), this section is optional; include
-  it only if a single external resource is the canonical reference.
+Surface the best match for the user's experience and task in conversation. For
+project workflow and meta-skills, include this section when a canonical reference
+would help the reader.
 
 ## Iteration
 

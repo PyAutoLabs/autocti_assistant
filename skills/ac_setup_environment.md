@@ -142,12 +142,12 @@ python autoassistant/audit_skill_apis.py --check-version
   almost always the missing-arcticpy case above. Re-run the recipe; do **not**
   install into an unrelated system Python.
 
-The sandbox cache variables (`NUMBA_CACHE_DIR`, `MPLCONFIGDIR`) and test-mode
-(`PYAUTO_TEST_MODE`) conventions are in
-[`wiki/core/operations/sandbox.md`](../wiki/core/operations/sandbox.md).
+If the default cache locations are read-only, set `NUMBA_CACHE_DIR` and
+`MPLCONFIGDIR` to writable directories before importing the stack. For an HPC
+environment, see the cache settings in [`activate.sh`](../activate.sh). For the
+effect of `PYAUTO_TEST_MODE` on searches, see [`ac_fit_cti_model`](./ac_fit_cti_model.md).
 
 ## Further reading
 
 - `PyAutoCTI:AGENTS.md` — the arcticpy note and the dependency direction.
 - `autocti_workspace_test:.github/scripts/smoke_install.sh` — the tested recipe.
-- [`wiki/core/operations/installation.md`](../wiki/core/operations/installation.md)
