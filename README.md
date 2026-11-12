@@ -61,8 +61,7 @@ it goes. You can also ask it to plan a calibration and talk through the trap mod
 - **Benchmarks** in [`benchmarks/`](benchmarks/README.md). No CTI benchmark has been written or run yet, so there
   are no performance claims here.
 
-The list of skills the assistant has today is in [`skills/README.md`](skills/README.md), and what's planned next is
-in [`PENDING.md`](PENDING.md).
+Browse the current [skill catalogue](skills/README.md) and the [CTI maintenance queue](PENDING.md).
 
 ## Science Project
 
