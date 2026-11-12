@@ -43,7 +43,11 @@ $BASE/PyAutoCTI
     export TRITON_CACHE_DIR="${TRITON_CACHE_DIR:-$PYAUTO_HPC_CACHE/triton}"
     export JAX_COMPILATION_CACHE_DIR="${JAX_COMPILATION_CACHE_DIR-$PYAUTO_HPC_CACHE/pyauto_jax}"
     export ASTROPY_CACHE_DIR="${ASTROPY_CACHE_DIR:-$PYAUTO_HPC_CACHE/astropy}"
-    export TMPDIR="${TMPDIR:-$(dirname "$PYAUTO_HPC_CACHE")/tmp}"
+    # Slurm sets TMPDIR=/tmp itself when the job environment has none, so /tmp counts
+    # as unset here; any other TMPDIR (e.g. a job's own scratch dir) wins.
+    if [ -z "${TMPDIR:-}" ] || [ "$TMPDIR" = /tmp ]; then
+        export TMPDIR="$(dirname "$PYAUTO_HPC_CACHE")/tmp"
+    fi
     mkdir -p "$TMPDIR" 2>/dev/null || true
 else
     echo "No local .venv found (set PYAUTO_HPC_BASE for a shared/HPC PyAuto checkout)." >&2
